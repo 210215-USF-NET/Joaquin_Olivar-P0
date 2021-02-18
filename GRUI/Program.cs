@@ -1,4 +1,5 @@
 ﻿using System;
+using GRModels;
 
 namespace GRUI
 {
@@ -6,7 +7,9 @@ namespace GRUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Vinyl newVinyl = new Vinyl();
+            newVinyl.VinylName = "TPAB";
+            Console.WriteLine(newVinyl.VinylName);
         }
     }
 }
