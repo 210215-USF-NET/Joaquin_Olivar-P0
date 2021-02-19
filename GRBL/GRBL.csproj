@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\GRDL\GRDL.csproj" />
     <ProjectReference Include="..\GRModels\GRModels.csproj" />
-    <ProjectReference Include="..\GRBL\GRBL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 

@@ -1,9 +1,25 @@
 ﻿using System;
+/*
+Class members:
 
+    in c#
+    fields, properties, methods, constructors
+    fields - characteristics of your object
+    method - behavior of your object
+    constructors - special methods that create object instances
+        - if there's no constructor, there's a default one that gets created for you
+    properties - "smart fields"
+        in C#, wrapper for a field, works as a getter & setter for a private backing field (actual object char)
+
+    POCO - plain old c# object; class that holds data
+*/
 namespace GRModels
 {
     public class Vinyl
     {
+        /// <summary>
+        /// Data structure used for ccreating a vinyl.
+        /// </summary>
         private string vinylName;
 
         public string VinylName{
@@ -15,6 +31,9 @@ namespace GRModels
                 vinylName = value;
             }
         }
-    
+
+        public Genre GenreType{get; set;}
+
+        public string Artist{get;set;}
     }
 }

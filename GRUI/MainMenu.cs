@@ -14,32 +14,45 @@ namespace GRUI
             do
             {
                 //Opening menu
-                Console.WriteLine("Yo guy. What you want?");
-                Console.WriteLine("[1] Buy vinyl");
-                Console.WriteLine("[2] Donate vinyl");
-                Console.WriteLine("[3] Gtfo.");
+                Console.WriteLine("Welcome to Gud Records Music Store.");
+                Console.WriteLine("[0] Buy vinyl");
+                Console.WriteLine("[1] Donate vinyl");
+                Console.WriteLine("[2] Leave.");
                 Console.WriteLine("Enter a number bro.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
                 switch(userInput)
                 {
-                    case "1":
+                    case "0":
                         Console.WriteLine("Function not yet available.");
                         break;
-                    case "2":
-                        Console.WriteLine("Dis ain't work either.");
+                    case "1":
+                        DonateVinyl();
                         break;
-                    case "3":
+                    case "2":
                         stay = false;
-                        Console.WriteLine("Get the hell outta here.");
+                        Console.WriteLine("Bye.");
                         break;
                     default:
-                        Console.WriteLine("...bro. Wtf you doin'?");
+                        Console.WriteLine("What?");
                         break;
                 }
 
             } while(stay);
+        }
+        public void DonateVinyl()
+        {
+            Vinyl newVinyl = new Vinyl();
+            Console.WriteLine("What's the album name?");
+            newVinyl.VinylName = Console.ReadLine();
+            Console.WriteLine("Who's the artist?");
+            newVinyl.Artist = Console.ReadLine();
+            Console.WriteLine("What's the genre?");
+            newVinyl.GenreType = Enum.Parse<Genre>(Console.ReadLine());
+            Console.WriteLine("Album donated.");
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadLine();
         }
     }
 }

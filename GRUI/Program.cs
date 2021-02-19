@@ -7,13 +7,9 @@ namespace GRUI
     {
         static void Main(string[] args)
         {
+            //Basic menu test.
             IMenu menu = new MainMenu();
             menu.Start();
-
-            //Test vinyl get.
-            Vinyl newVinyl = new Vinyl();
-            newVinyl.VinylName = "TPAB";
-            Console.WriteLine(newVinyl.VinylName);
         }
     }
 }
