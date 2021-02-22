@@ -5,14 +5,14 @@ using GRModels;
 
 namespace GRBL
 {
-    public class VinylBL : IVinylBL
+    public class RecordBL : IRecordBL
     {
-        public void AddVinyl(Vinyl newVinyl)
+        public void AddRecord(Record newRecord)
         {
             throw new NotImplementedException();
         }
 
-        public List<Vinyl> GetVinyls()
+        public List<Record> GetRecords()
         {
             throw new NotImplementedException();
         } 

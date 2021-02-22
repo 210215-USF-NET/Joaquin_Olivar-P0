@@ -28,7 +28,7 @@ namespace GRUI
                         Console.WriteLine("Function not yet available.");
                         break;
                     case "1":
-                        DonateVinyl();
+                        DonateRecord();
                         break;
                     case "2":
                         stay = false;
@@ -41,28 +41,27 @@ namespace GRUI
 
             } while(stay);
         }
-        public void DonateVinyl()
+        public void DonateRecord()
         {
-            //New vinyl creation
-            Vinyl newVinyl = new Vinyl();
+            //New record creation
+            Record newRecord = new Record();
             Console.WriteLine("What's the album name?");
-            newVinyl.VinylName = Console.ReadLine();
+            newRecord.RecordName = Console.ReadLine();
             Console.WriteLine("Who's the artist?");
-            newVinyl.Artist = Console.ReadLine();
+            newRecord.Artist = Console.ReadLine();
             Console.WriteLine("What's the genre?");
-            newVinyl.GenreType = Enum.Parse<Genre>(Console.ReadLine());
+            newRecord.GenreType = Enum.Parse<Genre>(Console.ReadLine());
             Console.WriteLine("What's the condition?");
-            newVinyl.daCondition = Enum.Parse<Condition>(Console.ReadLine());
+            newRecord.daCondition = Enum.Parse<Condition>(Console.ReadLine());
             Console.WriteLine("How much?");
-            newVinyl.price = float.Parse(Console.ReadLine());
-
+            newRecord.price = float.Parse(Console.ReadLine());
             //Outputs vinyl information
             Console.WriteLine("Album donated.");
-            Console.WriteLine("Album: " + newVinyl.VinylName);
-            Console.WriteLine("Artist: " + newVinyl.Artist);
-            Console.WriteLine("Genre: " + newVinyl.GenreType);
-            Console.WriteLine("Condition: " + newVinyl.daCondition);
-            Console.WriteLine("Price sold: $" + newVinyl.price);
+            Console.WriteLine("Album: " + newRecord.RecordName);
+            Console.WriteLine("Artist: " + newRecord.Artist);
+            Console.WriteLine("Genre: " + newRecord.GenreType);
+            Console.WriteLine("Condition: " + newRecord.daCondition);
+            Console.WriteLine("Price sold: $" + newRecord.price);
 
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();

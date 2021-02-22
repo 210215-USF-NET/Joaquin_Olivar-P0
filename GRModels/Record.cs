@@ -15,20 +15,20 @@ Class members:
 */
 namespace GRModels
 {
-    public class Vinyl
+    public class Record
     {
         /// <summary>
         /// Data structure used for creating a vinyl.
         /// </summary>
-        private string vinylName;
+        private string recordName;
 
-        public string VinylName{
-            get {return vinylName;}
+        public string RecordName{
+            get {return recordName;}
             set{
                 if (value.Equals(null)){
                     //write exception jawn
                 }
-                vinylName = value;
+                recordName = value;
             }
         }
 
