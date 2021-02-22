@@ -7,7 +7,6 @@ namespace GRBL
 {
     public class VinylBL : IVinylBL
     {
-    }
         public void AddVinyl(Vinyl newVinyl)
         {
             throw new NotImplementedException();
@@ -16,5 +15,6 @@ namespace GRBL
         public List<Vinyl> GetVinyls()
         {
             throw new NotImplementedException();
-        }
+        } 
+}
 }

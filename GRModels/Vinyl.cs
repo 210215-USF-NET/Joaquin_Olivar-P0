@@ -18,7 +18,7 @@ namespace GRModels
     public class Vinyl
     {
         /// <summary>
-        /// Data structure used for ccreating a vinyl.
+        /// Data structure used for creating a vinyl.
         /// </summary>
         private string vinylName;
 
@@ -33,7 +33,8 @@ namespace GRModels
         }
 
         public Genre GenreType{get; set;}
-
+        public Condition daCondition{get; set;}
+        public float price {get; set;}
         public string Artist{get;set;}
     }
 }

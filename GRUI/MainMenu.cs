@@ -43,6 +43,7 @@ namespace GRUI
         }
         public void DonateVinyl()
         {
+            //New vinyl creation
             Vinyl newVinyl = new Vinyl();
             Console.WriteLine("What's the album name?");
             newVinyl.VinylName = Console.ReadLine();
@@ -50,7 +51,19 @@ namespace GRUI
             newVinyl.Artist = Console.ReadLine();
             Console.WriteLine("What's the genre?");
             newVinyl.GenreType = Enum.Parse<Genre>(Console.ReadLine());
+            Console.WriteLine("What's the condition?");
+            newVinyl.daCondition = Enum.Parse<Condition>(Console.ReadLine());
+            Console.WriteLine("How much?");
+            newVinyl.price = float.Parse(Console.ReadLine());
+
+            //Outputs vinyl information
             Console.WriteLine("Album donated.");
+            Console.WriteLine("Album: " + newVinyl.VinylName);
+            Console.WriteLine("Artist: " + newVinyl.Artist);
+            Console.WriteLine("Genre: " + newVinyl.GenreType);
+            Console.WriteLine("Condition: " + newVinyl.daCondition);
+            Console.WriteLine("Price sold: $" + newVinyl.price);
+
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
         }
