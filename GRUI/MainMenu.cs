@@ -17,8 +17,8 @@ namespace GRUI
             {
                 //Opening menu
                 Console.WriteLine("Welcome to Gud Records Music Store.");
-                Console.WriteLine("[0] Buy vinyl");
-                Console.WriteLine("[1] Donate vinyl");
+                Console.WriteLine("[0] Create an account.");
+                Console.WriteLine("[1] Donate album.");
                 Console.WriteLine("[2] Leave.");
                 Console.WriteLine("Enter a number bro.");
 
@@ -27,8 +27,7 @@ namespace GRUI
                 switch(userInput)
                 {
                     case "0":
-                        Console.WriteLine("Function not yet available. Press any key to continue.");
-                        Console.ReadLine();
+                        CreateAccount();
                         break;
                     case "1":
                         DonateRecord();
@@ -45,6 +44,31 @@ namespace GRUI
 
             } while(stay);
         }
+        public void CreateAccount()
+        {
+            //Creating a new customer.
+            Customer newCustomer = new Customer();
+            Console.WriteLine("Oh. Another music nerd. Enter your username, loser:");
+            newCustomer.UserName = Console.ReadLine();
+            Console.WriteLine("How original. Enter e-mail:");
+            newCustomer.Email = Console.ReadLine();
+            Console.WriteLine("Enter address:");
+            newCustomer.Address = Console.ReadLine();
+            Console.WriteLine("Enter zip code:");
+            newCustomer.ZipCode = Int16.Parse(Console.ReadLine());
+
+            //Reading back customer information.
+            Console.WriteLine("New account added.");
+            Console.WriteLine(linebreak);
+            Console.WriteLine("Username: " + newCustomer.UserName);
+            Console.WriteLine("Email: " + newCustomer.Email);
+            Console.WriteLine("Address: " + newCustomer.Address);
+            Console.WriteLine("Zip code: " + newCustomer.ZipCode);
+            Console.WriteLine(linebreak);
+            Console.WriteLine("Press any key to continue:");
+            Console.ReadLine();
+        }
+        //----------
         public void DonateRecord()
         {
             //New record creation
