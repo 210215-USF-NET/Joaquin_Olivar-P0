@@ -34,7 +34,9 @@ namespace GRModels
 
         public Genre GenreType{get; set;}
         public Condition daCondition{get; set;}
-        public float price {get; set;}
+
+        public Format daFormat{get; set;}
+        public float Price {get; set;}
         public string Artist{get;set;}
     }
 }

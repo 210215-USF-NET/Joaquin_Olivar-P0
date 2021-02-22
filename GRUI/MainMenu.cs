@@ -4,8 +4,10 @@ namespace GRUI
 {
     public class MainMenu : IMenu
     {
+        public string linebreak = "------------------------";
         public MainMenu()
         {
+            //TODO: Figure out why I need this? I mean it still runs without it but...
         }
 
         public void Start()
@@ -25,7 +27,8 @@ namespace GRUI
                 switch(userInput)
                 {
                     case "0":
-                        Console.WriteLine("Function not yet available.");
+                        Console.WriteLine("Function not yet available. Press any key to continue.");
+                        Console.ReadLine();
                         break;
                     case "1":
                         DonateRecord();
@@ -35,7 +38,8 @@ namespace GRUI
                         Console.WriteLine("Bye.");
                         break;
                     default:
-                        Console.WriteLine("What?");
+                        Console.WriteLine("What? That's not an option bro. Pick again.");
+                        Console.WriteLine(linebreak);
                         break;
                 }
 
@@ -51,18 +55,24 @@ namespace GRUI
             newRecord.Artist = Console.ReadLine();
             Console.WriteLine("What's the genre?");
             newRecord.GenreType = Enum.Parse<Genre>(Console.ReadLine());
+            Console.WriteLine("What's the format?");
+            newRecord.daFormat = Enum.Parse<Format>(Console.ReadLine());
             Console.WriteLine("What's the condition?");
             newRecord.daCondition = Enum.Parse<Condition>(Console.ReadLine());
             Console.WriteLine("How much?");
-            newRecord.price = float.Parse(Console.ReadLine());
+            newRecord.Price = float.Parse(Console.ReadLine());
+
+
             //Outputs vinyl information
             Console.WriteLine("Album donated.");
+            Console.WriteLine(linebreak);
             Console.WriteLine("Album: " + newRecord.RecordName);
             Console.WriteLine("Artist: " + newRecord.Artist);
             Console.WriteLine("Genre: " + newRecord.GenreType);
+            Console.WriteLine("Format: " + newRecord.daFormat);
             Console.WriteLine("Condition: " + newRecord.daCondition);
-            Console.WriteLine("Price sold: $" + newRecord.price);
-
+            Console.WriteLine("Price sold: $" + newRecord.Price);
+            Console.WriteLine(linebreak);
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
         }
