@@ -4,7 +4,7 @@ namespace GRDL
 {
     public interface IRecordRepo
     {
-         List<Record> GetRecords();
-         Record AddRecord(Record newRecord);
+        List<Record> GetRecords();
+        Record AddRecord(Record newRecord);
     }
 }

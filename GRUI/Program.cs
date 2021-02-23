@@ -1,5 +1,7 @@
 ﻿using System;
 using GRModels;
+using GRBL;
+using GRDL;
 
 namespace GRUI
 {
@@ -8,7 +10,7 @@ namespace GRUI
         static void Main(string[] args)
         {
             //Basic menu test.
-            IMenu menu = new MainMenu();
+            IMenu menu = new MainMenu(new RecordBL(new RecordRepoFile()));
             menu.Start();
         }
     }

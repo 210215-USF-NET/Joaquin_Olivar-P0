@@ -1,15 +1,18 @@
 using GRModels;
 using System;
+using GRBL;
 namespace GRUI
 {
     public class MainMenu : IMenu
     {
-        public string linebreak = "------------------------";
-        public MainMenu()
+        private IRecordBL _recordBL;
+        
+        public MainMenu(IRecordBL recordBL)
         {
-            //TODO: Figure out why I need this? I mean it still runs without it but...
+            _recordBL = recordBL;
         }
 
+        public string linebreak = "------------------------";
         public void Start()
         {
             Boolean stay = true;
@@ -19,7 +22,8 @@ namespace GRUI
                 Console.WriteLine("Welcome to Gud Records Music Store.");
                 Console.WriteLine("[0] Create an account.");
                 Console.WriteLine("[1] Donate album.");
-                Console.WriteLine("[2] Leave.");
+                Console.WriteLine("[2] Get records.");
+                Console.WriteLine("[3] Leave.");
                 Console.WriteLine("Enter a number bro.");
 
                 //Get user input
@@ -33,6 +37,9 @@ namespace GRUI
                         DonateRecord();
                         break;
                     case "2":
+                        GetRecords();
+                        break;
+                    case "3":
                         stay = false;
                         Console.WriteLine("Bye.");
                         break;
@@ -86,6 +93,8 @@ namespace GRUI
             Console.WriteLine("How much?");
             newRecord.Price = float.Parse(Console.ReadLine());
 
+            //Sends information to the BL
+            _recordBL.AddRecord(newRecord);
 
             //Outputs vinyl information
             Console.WriteLine("Album donated.");
@@ -97,6 +106,15 @@ namespace GRUI
             Console.WriteLine("Condition: " + newRecord.daCondition);
             Console.WriteLine("Price sold: $" + newRecord.Price);
             Console.WriteLine(linebreak);
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadLine();
+        }
+        public void GetRecords()
+        {
+            foreach (var item in _recordBL.GetRecords())
+            {
+                Console.WriteLine(item.ToString());
+            }
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
         }

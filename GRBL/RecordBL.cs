@@ -6,15 +6,20 @@ using GRModels;
 namespace GRBL
 {
     public class RecordBL : IRecordBL
-    {
+    {   
+        private IRecordRepo _repo;
+        public RecordBL(IRecordRepo repo)
+        {
+            _repo = repo;
+        }
         public void AddRecord(Record newRecord)
         {
-            throw new NotImplementedException();
+            _repo.AddRecord(newRecord);
         }
 
         public List<Record> GetRecords()
         {
-            throw new NotImplementedException();
+            return _repo.GetRecords();
         } 
-}
+    } 
 }
