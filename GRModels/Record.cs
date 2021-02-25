@@ -26,7 +26,7 @@ namespace GRModels
             get {return recordName;}
             set{
                 if (value.Equals(null)){
-                    //write exception jawn
+                    throw new ArgumentNullException("Record must have a name.");
                 }
                 recordName = value;
             }

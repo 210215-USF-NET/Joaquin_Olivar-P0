@@ -5,23 +5,32 @@ using System.IO;
 using System.Text.Json;
 
 namespace GRDL
-{    public class RecordRepoFile : IRecordRepo
+{    
+    public class RecordRepoFile : IRecordRepo
     {
         private string jsonString;
         private string filePath = "./GRDL/RecordFiles.json";
 
         public Record AddRecord(Record newRecord)
         {
-            jsonString = JsonSerializer.Serialize(newRecord);
+            List<Record> recordsFromFile = GetRecords();
+            recordsFromFile.Add(newRecord);
+            jsonString = JsonSerializer.Serialize(recordsFromFile);
             File.WriteAllText(filePath, jsonString);
             return newRecord;
         }
 
         public List<Record> GetRecords()
         {
+            try
+            {
             jsonString = File.ReadAllText(filePath);
-            Record fileRecord = JsonSerializer.Deserialize<Record>(jsonString);
-            return new List<Record> { fileRecord };
+            }
+            catch (Exception)
+            {
+                return new List<Record>();
+            }
+            return JsonSerializer.Deserialize<List<Record>>(jsonString);
         }
     }
 }
