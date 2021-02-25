@@ -6,11 +6,11 @@ namespace GRUI
     public class MainMenu : IMenu
     {
         private IRecordBL _recordBL;
-        //private ICustomerBL _customerBL;
-        
-        public MainMenu(IRecordBL recordBL)
+        private ICustomerBL _customerBL; 
+        public MainMenu(IRecordBL recordBL, ICustomerBL customerBL)
         {
             _recordBL = recordBL;
+            _customerBL = customerBL;
         }
 
         public string linebreak = "------------------------";
@@ -36,8 +36,8 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        //GetCustomers();
-                        Console.WriteLine("Function work in progress.");
+                        GetCustomers();
+                        //Console.WriteLine("Function work in progress.");
                         break;
                     case "2":
                         DonateRecord();
@@ -73,19 +73,20 @@ namespace GRUI
             newCustomer.ZipCode = Int16.Parse(Console.ReadLine());
 
             //Reading back customer information.
+            _customerBL.AddCustomer(newCustomer);
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
         }
-        /*public void GetCustomers()
+        public void GetCustomers()
         {
             foreach (var item in _customerBL.GetCustomers())
             {
                 Console.WriteLine(item.ToString());
                 Console.WriteLine(linebreak);
             }
-            Console.WriteLine("Press any key to continue.";
+            Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
-        } */
+        } 
         //----------
         public void DonateRecord()
         {

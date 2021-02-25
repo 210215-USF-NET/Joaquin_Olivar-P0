@@ -1,7 +1,7 @@
 using GRModels;
 using System.Collections.Generic;
 
-namespace GRDL.CustomerDLFiles
+namespace GRDL
 {
     public class CustomerRepoSC : ICustomerRepo
     {

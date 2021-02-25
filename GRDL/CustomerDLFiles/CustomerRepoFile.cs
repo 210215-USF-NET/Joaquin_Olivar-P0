@@ -4,7 +4,7 @@ using GRModels;
 using System.IO;
 using System.Text.Json;
 
-namespace GRDL.CustomerDLFiles
+namespace GRDL
 {
     public class CustomerRepoFile : ICustomerRepo
     {

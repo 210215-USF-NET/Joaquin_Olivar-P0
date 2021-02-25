@@ -10,7 +10,7 @@ namespace GRUI
         static void Main(string[] args)
         {
             //Basic menu test.
-            IMenu menu = new MainMenu(new RecordBL(new RecordRepoFile()));
+            IMenu menu = new MainMenu(new RecordBL(new RecordRepoFile()),new CustomerBL(new CustomerRepoFile()));
             menu.Start();
         }
     }

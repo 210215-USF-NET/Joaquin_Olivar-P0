@@ -1,3 +1,4 @@
+using System;
 namespace GRModels
 {
     public class Customer
@@ -5,8 +6,14 @@ namespace GRModels
         private string firstName;
         public string FirstName 
         {
-            get;
-            set;
+            get {return firstName;}
+            set
+            {
+            if (value.Equals(null)){
+                throw new ArgumentNullException("Customer must have first name.");
+            }
+            firstName = value;
+            }
         }
         public string LastName {get; set;}
         public string Email {get; set;}
@@ -14,5 +21,9 @@ namespace GRModels
         public string Address {get;set;}
 
         public int ZipCode {get; set;}
+
+        public override string ToString() => $"Customer Details: \n\t Name: {this.FirstName}";
+        
+
     }
 }
