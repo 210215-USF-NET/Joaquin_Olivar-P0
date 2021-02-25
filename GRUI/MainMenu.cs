@@ -6,6 +6,7 @@ namespace GRUI
     public class MainMenu : IMenu
     {
         private IRecordBL _recordBL;
+        //private ICustomerBL _customerBL;
         
         public MainMenu(IRecordBL recordBL)
         {
@@ -21,9 +22,10 @@ namespace GRUI
                 //Opening menu
                 Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] Donate album.");
-                Console.WriteLine("[2] Get records.");
-                Console.WriteLine("[3] Leave.");
+                Console.WriteLine("[1] Customer list.");
+                Console.WriteLine("[2] Donate album.");
+                Console.WriteLine("[3] Get records.");
+                Console.WriteLine("[4] Leave.");
                 Console.WriteLine("Enter a number bro.");
 
                 //Get user input
@@ -34,12 +36,16 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        DonateRecord();
+                        //GetCustomers();
+                        Console.WriteLine("Function work in progress.");
                         break;
                     case "2":
-                        GetRecords();
+                        DonateRecord();
                         break;
                     case "3":
+                        GetRecords();
+                        break;
+                    case "4":
                         stay = false;
                         Console.WriteLine("Bye.");
                         break;
@@ -70,6 +76,16 @@ namespace GRUI
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
         }
+        /*public void GetCustomers()
+        {
+            foreach (var item in _customerBL.GetCustomers())
+            {
+                Console.WriteLine(item.ToString());
+                Console.WriteLine(linebreak);
+            }
+            Console.WriteLine("Press any key to continue.";
+            Console.ReadLine();
+        } */
         //----------
         public void DonateRecord()
         {
