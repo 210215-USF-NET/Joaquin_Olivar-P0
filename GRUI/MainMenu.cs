@@ -19,7 +19,7 @@ namespace GRUI
             do
             {
                 //Opening menu
-                Console.WriteLine("Welcome to Gud Records Music Store.");
+                Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("[0] Create an account.");
                 Console.WriteLine("[1] Donate album.");
                 Console.WriteLine("[2] Get records.");
@@ -55,8 +55,10 @@ namespace GRUI
         {
             //Creating a new customer.
             Customer newCustomer = new Customer();
-            Console.WriteLine("Oh. Another music nerd. Enter your username, loser:");
-            newCustomer.UserName = Console.ReadLine();
+            Console.WriteLine("Please enter your first name:");
+            newCustomer.FirstName = Console.ReadLine();
+            Console.WriteLine("Please enter your last name");
+            newCustomer.LastName = Console.ReadLine();
             Console.WriteLine("How original. Enter e-mail:");
             newCustomer.Email = Console.ReadLine();
             Console.WriteLine("Enter address:");
@@ -66,14 +68,7 @@ namespace GRUI
 
             //Reading back customer information.
             Console.WriteLine("New account added.");
-            Console.WriteLine(linebreak);
-            Console.WriteLine("Username: " + newCustomer.UserName);
-            Console.WriteLine("Email: " + newCustomer.Email);
-            Console.WriteLine("Address: " + newCustomer.Address);
-            Console.WriteLine("Zip code: " + newCustomer.ZipCode);
-            Console.WriteLine(linebreak);
-            Console.WriteLine("Press any key to continue:");
-            Console.ReadLine();
+            Console.WriteLine(newCustomer.ToString());
         }
         //----------
         public void DonateRecord()
@@ -99,12 +94,7 @@ namespace GRUI
             //Outputs vinyl information
             Console.WriteLine("Album donated.");
             Console.WriteLine(linebreak);
-            Console.WriteLine("Album: " + newRecord.RecordName);
-            Console.WriteLine("Artist: " + newRecord.Artist);
-            Console.WriteLine("Genre: " + newRecord.GenreType);
-            Console.WriteLine("Format: " + newRecord.daFormat);
-            Console.WriteLine("Condition: " + newRecord.daCondition);
-            Console.WriteLine("Price sold: $" + newRecord.Price);
+            Console.WriteLine(newRecord.ToString());
             Console.WriteLine(linebreak);
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
@@ -114,6 +104,7 @@ namespace GRUI
             foreach (var item in _recordBL.GetRecords())
             {
                 Console.WriteLine(item.ToString());
+                Console.WriteLine(linebreak);
             }
             Console.WriteLine("Press any key to continue.");
             Console.ReadLine();
