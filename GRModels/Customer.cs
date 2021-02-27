@@ -22,7 +22,7 @@ namespace GRModels
 
         public int ZipCode {get; set;}
 
-        public override string ToString() => $"Customer Details: \n\t Name: {this.FirstName}";
+        public override string ToString() => $"Customer Details: \n\t Name: {this.FirstName} {this.LastName} \n\t {this.Email} \n\t Address: {this.Address}, {this.ZipCode}";
         
 
     }

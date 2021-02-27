@@ -39,7 +39,7 @@ namespace GRModels
         public float Price {get; set;}
         public string Artist{get;set;}
 
-        public override string ToString() => $"Record Details: \n\t Album Name: {this.RecordName} \n\t Artist: {this.Artist} \n\t Genre: {this.GenreType} \n\t Format: {this.daFormat} \n\t Condition: {this.daCondition} \n\t Price: {this.Price}";
+        public override string ToString() => $"{this.daCondition} {this.daFormat}: \n\t Album Name: {this.RecordName} \n\t Artist: {this.Artist} \n\t Genre: {this.GenreType} \n\t Price: ${this.Price}";
 
     }
 }

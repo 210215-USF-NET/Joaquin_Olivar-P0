@@ -25,10 +25,9 @@ namespace GRUI
                 Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] Customer list.");;
-                Console.WriteLine("[2] View inventory.");
-                Console.WriteLine("[3] Manager login.");
-                Console.WriteLine("[4] Leave.");
+                Console.WriteLine("[1] View inventory.");
+                Console.WriteLine("[2] Manager login.");
+                Console.WriteLine("[3] Leave.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
@@ -38,12 +37,9 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        GetCustomers();
-                        break;
-                    case "2":
                         GetRecords();
                         break;
-                    case "3":
+                    case "2":
                         Console.WriteLine("Enter username: ");
                         if(Console.ReadLine() == Manager.userName)
                         {
@@ -68,7 +64,7 @@ namespace GRUI
                         Console.ReadLine();
                         }
                         break;
-                    case "4":
+                    case "3":
                         stay = false;
                         Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
@@ -101,18 +97,9 @@ namespace GRUI
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
         }
-        public void GetCustomers()
-        {
-            foreach (var item in _customerBL.GetCustomers())
-            {
-                Console.WriteLine(item.ToString());
-                Console.WriteLine(linebreak);
-            }
-            Console.WriteLine(presskey);
-            Console.ReadLine();
-        } 
         public void GetRecords()
         {
+            Console.WriteLine($"Here's what's in stock: \n{linebreak}");
             foreach (var item in _recordBL.GetRecords())
             {
                 Console.WriteLine(item.ToString());

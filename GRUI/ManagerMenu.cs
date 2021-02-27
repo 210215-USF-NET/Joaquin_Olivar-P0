@@ -20,7 +20,8 @@ namespace GRUI
             {
                 Console.WriteLine("Hello manager.");
                 Console.WriteLine("[0] Add record to inventory.");
-                Console.WriteLine("[1] Log out.");
+                Console.WriteLine("[1] View customers.");
+                Console.WriteLine("[2] Log out.");
                 string userInput = Console.ReadLine();
                 switch(userInput)
                 {
@@ -28,10 +29,12 @@ namespace GRUI
                     AddRecord();
                     break;
                     case "1":
+                    GetCustomers();
+                    break;
+                    case "2":
                     stay = false;
-                    Console.WriteLine("Good bye!");
-                    Console.WriteLine(MainMenu.presskey);
-                    Console.ReadLine();
+                    Console.WriteLine("Logged out. Returning you to main menu...");
+                    Console.WriteLine(MainMenu.linebreak);
                     break;
                 }
 
@@ -58,13 +61,35 @@ namespace GRUI
             //Sends information to the BL
             _recordBL.AddRecord(newRecord);
 
-            //Outputs vinyl information
-            Console.WriteLine("Album donated.");
+            //Writes back vinyl information
+            Console.WriteLine("Album added to inventory:");
             Console.WriteLine(MainMenu.linebreak);
             Console.WriteLine(newRecord.ToString());
             Console.WriteLine(MainMenu.linebreak);
             Console.WriteLine(MainMenu.presskey);
             Console.ReadLine();
         }
+        public void GetRecords()
+        {
+            Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
+            foreach (var item in _recordBL.GetRecords())
+            {
+                Console.WriteLine(item.ToString());
+                Console.WriteLine(MainMenu.linebreak);
+            }
+            Console.WriteLine(MainMenu.presskey);
+            Console.ReadLine();
+        }
+        public void GetCustomers()
+        {
+            Console.WriteLine($"Customer List: \n{MainMenu.linebreak}");
+            foreach (var item in _customerBL.GetCustomers())
+            {
+                Console.WriteLine(item.ToString());
+                Console.WriteLine(MainMenu.linebreak);
+            }
+            Console.WriteLine(MainMenu.presskey);
+            Console.ReadLine();
+        } 
     }
 }
