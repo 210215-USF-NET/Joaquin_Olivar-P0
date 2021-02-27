@@ -13,7 +13,8 @@ namespace GRUI
             _customerBL = customerBL;
         }
 
-        public string linebreak = "------------------------";
+        public static string linebreak = "------------------------";
+        public static string presskey = "Press any key to continue";
         public void Start()
         {
             Boolean stay = true;
@@ -38,7 +39,6 @@ namespace GRUI
                         break;
                     case "1":
                         GetCustomers();
-                        //Console.WriteLine("Function work in progress.");
                         break;
                     case "2":
                         DonateRecord();
@@ -59,7 +59,7 @@ namespace GRUI
                             else
                             {
                                 Console.WriteLine("Incorrect password.");
-                                Console.WriteLine("Press any key to continue.");
+                                Console.WriteLine(presskey);
                                 Console.ReadLine();
                                 break;
                             }
@@ -67,13 +67,13 @@ namespace GRUI
                         else
                         {
                         Console.WriteLine("Incorrect username.");
-                        Console.WriteLine("Press any key to continue.");
+                        Console.WriteLine(presskey);
                         Console.ReadLine();
                         }
                         break;
                     case "5":
                         stay = false;
-                        Console.WriteLine("Bye.");
+                        Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
                     
                     default:
@@ -111,7 +111,7 @@ namespace GRUI
                 Console.WriteLine(item.ToString());
                 Console.WriteLine(linebreak);
             }
-            Console.WriteLine("Press any key to continue.");
+            Console.WriteLine(presskey);
             Console.ReadLine();
         } 
         //----------
@@ -140,7 +140,7 @@ namespace GRUI
             Console.WriteLine(linebreak);
             Console.WriteLine(newRecord.ToString());
             Console.WriteLine(linebreak);
-            Console.WriteLine("Press any key to continue.");
+            Console.WriteLine(presskey);
             Console.ReadLine();
         }
         public void GetRecords()
@@ -150,7 +150,7 @@ namespace GRUI
                 Console.WriteLine(item.ToString());
                 Console.WriteLine(linebreak);
             }
-            Console.WriteLine("Press any key to continue.");
+            Console.WriteLine(presskey);
             Console.ReadLine();
         }
     }
