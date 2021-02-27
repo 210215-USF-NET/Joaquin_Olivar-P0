@@ -25,7 +25,8 @@ namespace GRUI
                 Console.WriteLine("[1] Customer list.");
                 Console.WriteLine("[2] Donate album.");
                 Console.WriteLine("[3] Get records.");
-                Console.WriteLine("[4] Leave.");
+                Console.WriteLine("[4] Manager login.");
+                Console.WriteLine("[5] Leave.");
                 Console.WriteLine("Enter a number bro.");
 
                 //Get user input
@@ -46,9 +47,35 @@ namespace GRUI
                         GetRecords();
                         break;
                     case "4":
+                        Console.WriteLine("Enter username: ");
+                        if(Console.ReadLine() == Manager.userName)
+                        {
+                            Console.WriteLine("Enter password: ");
+                            if(Console.ReadLine() == Manager.passWord)
+                            {
+                                IMenu adminmenu = new ManagerMenu();
+                                adminmenu.Start();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Incorrect password.");
+                                Console.WriteLine("Press any key to continue.");
+                                Console.ReadLine();
+                                break;
+                            }
+                        }
+                        else
+                        {
+                        Console.WriteLine("Incorrect username.");
+                        Console.WriteLine("Press any key to continue.");
+                        Console.ReadLine();
+                        }
+                        break;
+                    case "5":
                         stay = false;
                         Console.WriteLine("Bye.");
                         break;
+                    
                     default:
                         Console.WriteLine("What? That's not an option bro. Pick again.");
                         Console.WriteLine(linebreak);
@@ -65,7 +92,7 @@ namespace GRUI
             newCustomer.FirstName = Console.ReadLine();
             Console.WriteLine("Please enter your last name");
             newCustomer.LastName = Console.ReadLine();
-            Console.WriteLine("How original. Enter e-mail:");
+            Console.WriteLine("Please enter e-mail:");
             newCustomer.Email = Console.ReadLine();
             Console.WriteLine("Enter address:");
             newCustomer.Address = Console.ReadLine();
