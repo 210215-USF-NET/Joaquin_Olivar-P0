@@ -12,14 +12,21 @@ namespace GRBL
         {
             _repo = repo;
         }
-        public void AddRecord(Record newRecord)
+        public void AddPhillyRecord(Record newRecord)
         {
-            _repo.AddRecord(newRecord);
+            _repo.AddPhillyRecord(newRecord);
         }
-
-        public List<Record> GetRecords()
+        public void AddNYCRecord(Record newRecord)
         {
-            return _repo.GetRecords();
-        } 
+            _repo.AddNYCRecord(newRecord);
+        }
+        public List<Record> GetPhillyRecords()
+        {
+            return _repo.GetPhillyRecords();
+        }
+        public List<Record> GetNYCRecords()
+        {
+            return _repo.GetNYCRecords();
+        }
     } 
 }

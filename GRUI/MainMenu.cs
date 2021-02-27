@@ -15,7 +15,7 @@ namespace GRUI
         }
 
         public static string linebreak = "------------------------";
-        public static string presskey = "Press any key to continue";
+        public static string presskey = "Press any key to continue.";
         public void Start()
         {
             Boolean stay = true;
@@ -99,14 +99,43 @@ namespace GRUI
         }
         public void GetRecords()
         {
-            Console.WriteLine($"Here's what's in stock: \n{linebreak}");
-            foreach (var item in _recordBL.GetRecords())
+        Boolean stay = true;
+        do
+        {
+            Console.WriteLine("Choose location: ");
+            Console.WriteLine("[0] Philadelphia, PA");
+            Console.WriteLine("[1] New York City, NY");
+            Console.WriteLine("[2] Go back.");
+            string userInput = Console.ReadLine();
+            switch(userInput)
             {
-                Console.WriteLine(item.ToString());
-                Console.WriteLine(linebreak);
+                case "0":
+                Console.WriteLine($"Here's what's in stock: \n{linebreak}");
+                foreach (var item in _recordBL.GetPhillyRecords())
+                {
+                    Console.WriteLine(item.ToString());
+                    Console.WriteLine(linebreak);
+                }
+                Console.WriteLine(presskey);
+                Console.ReadLine();
+                stay = false;
+                break;
+                case "1":
+                Console.WriteLine($"Here's what's in stock: \n{linebreak}");
+                foreach (var item in _recordBL.GetNYCRecords())
+                {
+                    Console.WriteLine(item.ToString());
+                    Console.WriteLine(linebreak);
+                }
+                Console.WriteLine(presskey);
+                Console.ReadLine();
+                stay = false;
+                break;
+                case "2":
+                stay = false;
+                break;
             }
-            Console.WriteLine(presskey);
-            Console.ReadLine();
+        } while(stay);
         }
     }
 }

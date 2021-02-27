@@ -4,7 +4,9 @@ namespace GRBL
 {
     public interface IRecordBL
     {
-        List<Record> GetRecords();
-        void AddRecord(Record newRecord);
+        List<Record> GetPhillyRecords();
+        List<Record> GetNYCRecords();
+        void AddPhillyRecord(Record newRecord);
+        void AddNYCRecord(Record newRecord);
     }
 }

@@ -7,12 +7,12 @@ namespace GRDL
     {
         public List<Customer> GetCustomers()
         {
-            return Storage.AllCustomers;
+            return Location.AllCustomers;
         }
 
         public Customer AddCustomer(Customer newCustomer)
         {
-            Storage.AllCustomers.Add(newCustomer);
+            Location.AllCustomers.Add(newCustomer);
             return newCustomer;
         }
     }

@@ -5,14 +5,24 @@ namespace GRDL
 {
     public class RecordRepoSC : IRecordRepo
     {
-        public List<Record> GetRecords()
+
+        public List<Record> GetPhillyRecords()
         {
-            return Storage.AllRecords;
+            return Location.PhillyRecords;
+        }
+        public List<Record> GetNYCRecords()
+        {
+            return Location.NYCRecords;
         }
 
-        public Record AddRecord(Record newRecord)
+        public Record AddPhillyRecord(Record newRecord)
         {
-            Storage.AllRecords.Add(newRecord);
+            Location.PhillyRecords.Add(newRecord);
+            return newRecord;
+        }
+        public Record AddNYCRecord(Record newRecord)
+        {
+            Location.NYCRecords.Add(newRecord);
             return newRecord;
         }
     }
