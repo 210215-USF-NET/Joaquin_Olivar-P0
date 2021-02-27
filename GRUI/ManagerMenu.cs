@@ -25,7 +25,7 @@ namespace GRUI
                 switch(userInput)
                 {
                     case "0":
-                    DonateRecord();
+                    AddRecord();
                     break;
                     case "1":
                     stay = false;
@@ -38,7 +38,7 @@ namespace GRUI
             }
             while(stay);
         }
-        public void DonateRecord()
+        public void AddRecord()
         {
             //New record creation
             Record newRecord = new Record();

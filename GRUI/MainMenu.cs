@@ -23,13 +23,12 @@ namespace GRUI
             {
                 //Opening menu
                 Console.WriteLine("Welcome to Gud Records Music Store!");
+                Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] Customer list.");
-                Console.WriteLine("[2] Donate album.");
-                Console.WriteLine("[3] Get records.");
-                Console.WriteLine("[4] Manager login.");
-                Console.WriteLine("[5] Leave.");
-                Console.WriteLine("Enter a number bro.");
+                Console.WriteLine("[1] Customer list.");;
+                Console.WriteLine("[2] View inventory.");
+                Console.WriteLine("[3] Manager login.");
+                Console.WriteLine("[4] Leave.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
@@ -42,12 +41,9 @@ namespace GRUI
                         GetCustomers();
                         break;
                     case "2":
-                        DonateRecord();
-                        break;
-                    case "3":
                         GetRecords();
                         break;
-                    case "4":
+                    case "3":
                         Console.WriteLine("Enter username: ");
                         if(Console.ReadLine() == Manager.userName)
                         {
@@ -72,13 +68,13 @@ namespace GRUI
                         Console.ReadLine();
                         }
                         break;
-                    case "5":
+                    case "4":
                         stay = false;
                         Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
                     
                     default:
-                        Console.WriteLine("What? That's not an option bro. Pick again.");
+                        Console.WriteLine("Not a valid option. Try again.");
                         Console.WriteLine(linebreak);
                         break;
                 }
@@ -115,35 +111,6 @@ namespace GRUI
             Console.WriteLine(presskey);
             Console.ReadLine();
         } 
-        //----------
-        public void DonateRecord()
-        {
-            //New record creation
-            Record newRecord = new Record();
-            Console.WriteLine("What's the album name?");
-            newRecord.RecordName = Console.ReadLine();
-            Console.WriteLine("Who's the artist?");
-            newRecord.Artist = Console.ReadLine();
-            Console.WriteLine("What's the genre?");
-            newRecord.GenreType = Enum.Parse<Genre>(Console.ReadLine());
-            Console.WriteLine("What's the format?");
-            newRecord.daFormat = Enum.Parse<Format>(Console.ReadLine());
-            Console.WriteLine("What's the condition?");
-            newRecord.daCondition = Enum.Parse<Condition>(Console.ReadLine());
-            Console.WriteLine("How much?");
-            newRecord.Price = float.Parse(Console.ReadLine());
-
-            //Sends information to the BL
-            _recordBL.AddRecord(newRecord);
-
-            //Outputs vinyl information
-            Console.WriteLine("Album donated.");
-            Console.WriteLine(linebreak);
-            Console.WriteLine(newRecord.ToString());
-            Console.WriteLine(linebreak);
-            Console.WriteLine(presskey);
-            Console.ReadLine();
-        }
         public void GetRecords()
         {
             foreach (var item in _recordBL.GetRecords())

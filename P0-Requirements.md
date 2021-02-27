@@ -2,14 +2,15 @@
 ## Overview
 The store app is a software that helps customers purchase products from your business. Designed with functionality that would make virtual shopping much simpler!
 
-
 ## Functionality
-- The customer should be able to place orders
-- The customer should be able to view their order history
-- The customer should be able to view location inventory
-- The customer should know how much of a product is remaining
+- add a new customer
+- search customers by name
+- display details of an order
+- place orders to store locations for customers
+- view order history of customer
+- view order history of location
+- view location inventory
 - The customer should be able to purchase multiple products
-- Locations should have records of order history
 - Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive)
 - The manager should be able to replenish inventory
 
