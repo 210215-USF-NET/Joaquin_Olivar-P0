@@ -1,6 +1,7 @@
 using GRModels;
 using System;
 using GRBL;
+using GRDL;
 namespace GRUI
 {
     public class MainMenu : IMenu
@@ -53,7 +54,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu();
+                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoFile()),new CustomerBL(new CustomerRepoFile()));
                                 adminmenu.Start();
                             }
                             else
