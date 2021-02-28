@@ -2,6 +2,6 @@ namespace GRModels
 {
     public enum Condition
     {
-        New, Used
+        New = 1, Used = 2
     }
 }

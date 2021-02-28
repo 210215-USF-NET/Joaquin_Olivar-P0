@@ -1,7 +1,11 @@
 ﻿using GRBL;
 using GRDL;
+using GRDL.Entities;
 using Serilog;
 using Serilog.Formatting.Compact;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace GRUI
 {
@@ -9,8 +13,17 @@ namespace GRUI
     {
         static void Main(string[] args)
         {
-            //Basic menu test.
-            IMenu menu = new MainMenu(new RecordBL(new RecordRepoFile()),new CustomerBL(new CustomerRepoFile()));
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json").Build();
+
+            string connectionString = configuration.GetConnectionString("RecordDB");
+            DbContextOptions<GRdatabaseContext> options = new DbContextOptionsBuilder<GRdatabaseContext>()
+            .UseSqlServer(connectionString).Options;
+
+            using var context = new GRdatabaseContext(options);
+
+            IMenu menu = new MainMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoFile()));
             menu.Start();
 
             Log.Logger = new LoggerConfiguration()
