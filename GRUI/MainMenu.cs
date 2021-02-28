@@ -2,6 +2,10 @@ using GRModels;
 using System;
 using GRBL;
 using GRDL;
+using GRDL.Entities;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 namespace GRUI
 {
     public class MainMenu : IMenu
@@ -18,6 +22,17 @@ namespace GRUI
         public static string presskey = "Press any key to continue.";
         public void Start()
         {
+            //Context
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json").Build();
+
+            string connectionString = configuration.GetConnectionString("RecordDB");
+            DbContextOptions<GRdatabaseContext> options = new DbContextOptionsBuilder<GRdatabaseContext>()
+            .UseSqlServer(connectionString).Options;
+
+            using var context = new GRdatabaseContext(options);
+            //End context
             Boolean stay = true;
             do
             {
@@ -46,7 +61,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoFile()),new CustomerBL(new CustomerRepoFile()));
+                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoFile()));
                                 adminmenu.Start();
                             }
                             else

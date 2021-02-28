@@ -9,8 +9,8 @@ namespace GRDL
     public class RecordRepoFile : IRecordRepo
     {
         private string jsonString;
-        private string filePathPhilly = "./GRDL/RecordDLFiles/PhillyRecordFiles.json";
-        private string filePathNYC = "./GRDL/RecordDLFiles/NYRecordFiles.json";
+        private string filePathPhilly = "../GRDL/RecordDLFiles/PhillyRecordFiles.json";
+        private string filePathNYC = "../GRDL/RecordDLFiles/NYRecordFiles.json";
 
         public Record AddPhillyRecord(Record newRecord)
         {
