@@ -9,10 +9,10 @@ The store app is a software that helps customers purchase products from your bus
 - place orders to store locations for customers
 - view order history of customer
 - view order history of location
-- view location inventory 
+- view location inventory [Done]
 - The customer should be able to purchase multiple products
 - Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive)
-- The manager should be able to replenish inventory [Half-Done]
+- The manager should be able to replenish inventory [Done]
 
 ## Models
 - Customer
