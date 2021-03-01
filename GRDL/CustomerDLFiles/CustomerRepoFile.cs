@@ -9,7 +9,7 @@ namespace GRDL
     public class CustomerRepoFile : ICustomerRepo
     {
         private string jsonString;
-        private string filePath = "./GRDL/CustomerDLFiles/CustomerFiles.json";
+        private string filePath = "../GRDL/CustomerDLFiles/CustomerFiles.json";
 
         public Customer AddCustomer(Customer newCustomer)
         {

@@ -1,12 +1,14 @@
 --Table drop sequence
 drop table inventories; --dependent on records and inventories
 drop table records; --dependent on the enums
+drop table customers;
 drop table genre;
 drop table condition;
 drop table recFormat;
 drop table locations;
 
 --Table Creation DDL
+---Record table w/ enums
 create table genre
 (
 	id int identity primary key,
@@ -41,6 +43,16 @@ create table records
 	recFormat int references recFormat(id),
 	price float not null
 );
+--Customer data table
+create table customers
+(
+	id int identity primary key,
+	fName varchar(100) not null,
+	lName varchar(100) not null,
+	eMail varchar(100) not null,
+	address varchar(100) not null,
+	zip int not null,
+	)
 create table locations
 (
 	id int identity(100,100) primary key,
@@ -75,10 +87,14 @@ insert into records (recordName, artistName, genre, condition, recFormat,price) 
 insert into locations (locName) values
 ('Philadelphia, PA'), ('New York City, NY')
 
+insert into customers (fName, lName, eMail, address, zip) values
+('john', 'doe', 'johndoe@gmail.com', '1234 Real St.', '12345')
+
 insert into inventories (idInv, idRec, idLoc) values
 (1,1000,100), (2,1001,100), (3,1002,200),(4,1003,100),(5,1002,100)
 
 --Check data
 select * from records
 select * from locations
-select * from inventories
+select * from customers
+select * from inventories where idLoc = 100
