@@ -72,5 +72,107 @@ namespace GRDL
                 LocName = location.localName
             };
         }
+
+        public Model.Cart ParseCart(Entity.Cart cart)
+        {
+            return new Model.Cart
+            {
+                CartID = cart.Id,
+                CustomerID = cart.IdCust
+            };
+        }
+
+        public Entity.Cart ParseCart(Model.Cart cart)
+        {
+            return new Entity.Cart
+            {
+                Id = cart.CartID,
+                IdCust = cart.CustomerID
+            };
+        }
+
+        public Model.CartProducts ParseCartProducts(Entity.Cartproduct cartproduct)
+        {
+            return new Model.CartProducts
+            {
+                CPID = cartproduct.Id,
+                RecID = cartproduct.IdProd,
+                CartID = cartproduct.IdCart
+            };
+        }
+
+        public Entity.Cartproduct ParseCartProducts(Model.CartProducts cartproduct)
+        {
+            return new Entity.Cartproduct
+            {
+                Id = cartproduct.CPID,
+                IdProd = cartproduct.RecID,
+                IdCart = cartproduct.CartID
+            };
+        }
+
+        public Model.Inventory ParseInventory(Entity.Inventory inventory)
+        {
+
+            return new Model.Inventory
+            {
+                InvID = inventory.IdInv,
+                RecID = inventory.IdRec,
+                LocID = inventory.IdLoc
+            };
+        }
+
+        public Entity.Inventory ParseInventory(Model.Inventory inventory)
+        {
+            return new Entity.Inventory
+            {
+                IdInv = inventory.InvID,
+                IdRec = inventory.RecID,
+                IdLoc = inventory.LocID
+            };
+        }
+
+        public Orders ParseOrder(Order order)
+        {
+            return new Model.Orders
+            {
+                OrdID = order.Id,
+                localID = order.Location,
+                CartID = order.IdCart,
+                OrDate = order.ODate,
+
+            };
+        }
+
+        public Order ParseOrder(Orders order)
+        {
+            return new Entity.Order
+            {
+                Id = order.OrdID,
+                Location = order.localID,
+                IdCart = order.CartID,
+                ODate = order.OrDate
+            };
+        }
+
+        public OrderProducts ParseOrderProduct(Orderproduct orderproduct)
+        {
+            return new Model.OrderProducts
+            {
+                OrdProdId = orderproduct.Id,
+                RecID = orderproduct.Idproducts,
+                OrdID = orderproduct.Idorder
+            };
+        }
+
+        public Orderproduct ParseOrderProduct(OrderProducts orderproduct)
+        {
+            return new Entity.Orderproduct
+            {
+                Id = orderproduct.OrdProdId,
+                Idproducts = orderproduct.RecID,
+                Idorder = orderproduct.OrdID
+            };
+        }
     }
 }
