@@ -3,6 +3,7 @@ using Model = GRModels;
 using Entity = GRDL.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using GRModels;
 
 namespace GRDL
 {
@@ -38,6 +39,11 @@ namespace GRDL
         public List<Model.Record> GetPhillyRecords()
         {
             return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList();
+        }
+
+        public Record SearchRecordByName(string name)
+        {
+        return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList().FirstOrDefault(x => x.RecordName == name);
         }
     }
 }

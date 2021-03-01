@@ -28,5 +28,10 @@ namespace GRBL
         {
             return _repo.GetNYCRecords();
         }
+
+        public Record SearchRecordByName(string name)
+        {
+            return _repo.SearchRecordByName(name);
+        }
     } 
 }

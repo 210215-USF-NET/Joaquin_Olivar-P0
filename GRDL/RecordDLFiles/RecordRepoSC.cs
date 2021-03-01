@@ -25,5 +25,10 @@ namespace GRDL
             Location.NYCRecords.Add(newRecord);
             return newRecord;
         }
+
+        public Record SearchRecordByName(string name)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

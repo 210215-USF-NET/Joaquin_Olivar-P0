@@ -41,9 +41,10 @@ namespace GRUI
                 Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] View inventory.");
-                Console.WriteLine("[2] Manager login.");
-                Console.WriteLine("[3] Leave.");
+                Console.WriteLine("[1] View full inventory.");
+                Console.WriteLine("[2] Search inventory.");
+                Console.WriteLine("[3] Manager login.");
+                Console.WriteLine("[4] Leave.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
@@ -56,6 +57,9 @@ namespace GRUI
                         GetRecords();
                         break;
                     case "2":
+                        SearchRecords();
+                        break;
+                    case "3":
                         Console.WriteLine("Enter username: ");
                         if(Console.ReadLine() == Manager.userName)
                         {
@@ -80,7 +84,7 @@ namespace GRUI
                         Console.ReadLine();
                         }
                         break;
-                    case "3":
+                    case "4":
                         stay = false;
                         Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
@@ -152,6 +156,19 @@ namespace GRUI
                 break;
             }
         } while(stay);
+        }
+        public void SearchRecords()
+        {
+            Console.WriteLine("Enter record name: ");
+            Model.Record foundRecord = _recordBL.SearchRecordByName(Console.ReadLine());
+            if (foundRecord == null)
+            {
+                Console.WriteLine("No record found.");
+            }
+            else
+            {
+                Console.WriteLine(foundRecord.ToString());
+            }
         }
     }
 }

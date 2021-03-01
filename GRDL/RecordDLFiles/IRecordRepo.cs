@@ -9,5 +9,7 @@ namespace GRDL
         List<Record> GetNYCRecords();
         Record AddPhillyRecord(Record newRecord);
         Record AddNYCRecord(Record newRecord);
+
+        Record SearchRecordByName(string name);
     }
 }

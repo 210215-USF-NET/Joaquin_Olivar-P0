@@ -53,5 +53,10 @@ namespace GRDL
             }
             return JsonSerializer.Deserialize<List<Record>>(jsonString);
         }
+
+        public Record SearchRecordByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace GRBL
         List<Record> GetNYCRecords();
         void AddPhillyRecord(Record newRecord);
         void AddNYCRecord(Record newRecord);
+
+        Record SearchRecordByName(string name);
     }
 }
