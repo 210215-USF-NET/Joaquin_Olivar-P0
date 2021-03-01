@@ -1,4 +1,5 @@
 using GRModels;
+using Model = GRModels;
 using System;
 using GRBL;
 using GRDL;
@@ -61,7 +62,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoFile()));
+                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoDB(context, new CustomerMapper())));
                                 adminmenu.Start();
                             }
                             else
@@ -95,7 +96,7 @@ namespace GRUI
         public void CreateAccount()
         {
             //Creating a new customer.
-            Customer newCustomer = new Customer();
+            Model.Customer newCustomer = new Model.Customer();
             Console.WriteLine("Please enter your first name:");
             newCustomer.FirstName = Console.ReadLine();
             Console.WriteLine("Please enter your last name");
