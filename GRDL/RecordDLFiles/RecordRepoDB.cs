@@ -10,8 +10,8 @@ namespace GRDL
     public class RecordRepoDB : IRecordRepo
     {
         private Entity.GRdatabaseContext _context;
-        private IRecordMapper _mapper;
-        public RecordRepoDB(Entity.GRdatabaseContext context, IRecordMapper mapper)
+        private IMapper _mapper;
+        public RecordRepoDB(Entity.GRdatabaseContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -38,12 +38,13 @@ namespace GRDL
 
         public List<Model.Record> GetPhillyRecords()
         {
+            
             return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList();
         }
 
         public Record SearchRecordByName(string name)
         {
-        return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList().FirstOrDefault(x => x.RecordName == name);
+            return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList().FirstOrDefault(x => x.RecordName == name);
         }
     }
 }

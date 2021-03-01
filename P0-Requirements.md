@@ -4,7 +4,7 @@ The store app is a software that helps customers purchase products from your bus
 
 ## Functionality
 - add a new customer [Done]
-- search customers by name 
+- search customers by name [Done]
 - display details of an order
 - place orders to store locations for customers
 - view order history of customer

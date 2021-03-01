@@ -66,7 +66,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoDB(context, new CustomerMapper())));
+                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())));
                                 adminmenu.Start();
                             }
                             else

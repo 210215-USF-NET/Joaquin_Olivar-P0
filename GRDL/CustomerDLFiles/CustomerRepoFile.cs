@@ -33,7 +33,7 @@ namespace GRDL
             return JsonSerializer.Deserialize<List<Customer>>(jsonString);
         }
 
-        public Customer SearchCustomerByName(string name)
+        public Customer SearchCustomerByFName(string name)
         {
             throw new NotImplementedException();
         }

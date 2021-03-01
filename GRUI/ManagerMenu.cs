@@ -176,7 +176,7 @@ namespace GRUI
         public void SearchCustomers()
         {
             Console.WriteLine("Enter customer name: ");
-            Customer foundCustomer = _customerBL.SearchCustomerByName(Console.ReadLine());
+            Customer foundCustomer = _customerBL.SearchCustomerByFName(Console.ReadLine());
             if (foundCustomer == null)
             {
                 Console.WriteLine("No customers found.");

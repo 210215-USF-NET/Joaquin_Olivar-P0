@@ -16,7 +16,7 @@ namespace GRDL
             return newCustomer;
         }
 
-        public Customer SearchCustomerByName(string name)
+        public Customer SearchCustomerByFName(string name)
         {
             throw new System.NotImplementedException();
         }

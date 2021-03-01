@@ -22,9 +22,9 @@ namespace GRBL
             return _repo.GetCustomers();
         }
 
-        public Customer SearchCustomerByName(string name)
+        public Customer SearchCustomerByFName(string name)
         {
-            return _repo.SearchCustomerByName(name);
+            return _repo.SearchCustomerByFName(name);
         }
     }
 }

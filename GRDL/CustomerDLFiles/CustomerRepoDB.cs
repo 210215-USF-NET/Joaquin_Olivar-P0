@@ -10,8 +10,8 @@ namespace GRDL
     public class CustomerRepoDB : ICustomerRepo
     {
         private Entity.GRdatabaseContext _context;
-        private ICustomerMapper _mapper;
-        public CustomerRepoDB(Entity.GRdatabaseContext context, ICustomerMapper mapper)
+        private IMapper _mapper;
+        public CustomerRepoDB(Entity.GRdatabaseContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -29,7 +29,7 @@ namespace GRDL
             return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList();
         }
 
-        public Customer SearchCustomerByName(string name)
+        public Customer SearchCustomerByFName(string name)
         {
             return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList().FirstOrDefault(x => x.FirstName == name);
         }
