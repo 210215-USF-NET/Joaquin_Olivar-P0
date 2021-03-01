@@ -8,8 +8,8 @@ namespace GRDL.Entities
     public partial class Cartproduct
     {
         public int Id { get; set; }
-        public int? IdProd { get; set; }
-        public int? IdCart { get; set; }
+        public int IdProd { get; set; }
+        public int IdCart { get; set; }
         public int ProductQuant { get; set; }
 
         public virtual Cart IdCartNavigation { get; set; }

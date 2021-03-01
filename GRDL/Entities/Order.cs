@@ -13,8 +13,8 @@ namespace GRDL.Entities
         }
 
         public int Id { get; set; }
-        public int? Location { get; set; }
-        public int? IdCart { get; set; }
+        public int Location { get; set; }
+        public int IdCart { get; set; }
         public DateTime ODate { get; set; }
 
         public virtual Cart IdCartNavigation { get; set; }

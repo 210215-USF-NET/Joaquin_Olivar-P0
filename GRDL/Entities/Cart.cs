@@ -14,7 +14,7 @@ namespace GRDL.Entities
         }
 
         public int Id { get; set; }
-        public int? IdCust { get; set; }
+        public int IdCust { get; set; }
 
         public virtual Customer IdCustNavigation { get; set; }
         public virtual ICollection<Cartproduct> Cartproducts { get; set; }
