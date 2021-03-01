@@ -33,6 +33,7 @@ namespace GRDL
 
         public List<Model.Record> GetNYCRecords()
         {
+            //_context.Locations.Select(x => _mapper.ParseLocation(x)).ToList().Where(x => x.localName == location);
             return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList();
         }
 
