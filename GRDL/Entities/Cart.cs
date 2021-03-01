@@ -5,18 +5,19 @@ using System.Collections.Generic;
 
 namespace GRDL.Entities
 {
-    public partial class Location
+    public partial class Cart
     {
-        public Location()
+        public Cart()
         {
-            Inventories = new HashSet<Inventory>();
             Orders = new HashSet<Order>();
         }
 
         public int Id { get; set; }
-        public string LocName { get; set; }
+        public int? IdCust { get; set; }
+        public int? IdCartProd { get; set; }
 
-        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual Cartproduct IdCartProdNavigation { get; set; }
+        public virtual Customer IdCustNavigation { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

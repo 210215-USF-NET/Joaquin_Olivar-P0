@@ -41,10 +41,11 @@ namespace GRUI
                 Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] View full inventory.");
-                Console.WriteLine("[2] Search inventory.");
-                Console.WriteLine("[3] Manager login.");
-                Console.WriteLine("[4] Leave.");
+                Console.WriteLine("[1] Buy stuff.");
+                Console.WriteLine("[2] View full inventory.");
+                Console.WriteLine("[3] Search inventory.");
+                Console.WriteLine("[4] Manager login.");
+                Console.WriteLine("[5] Leave.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
@@ -54,12 +55,16 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        GetRecords();
+                        Console.WriteLine("Work in progress.");
+                        //BuyRecords();
                         break;
                     case "2":
-                        SearchRecords();
+                        GetRecords();
                         break;
                     case "3":
+                        SearchRecords();
+                        break;
+                    case "4":
                         Console.WriteLine("Enter username: ");
                         if(Console.ReadLine() == Manager.userName)
                         {
@@ -84,7 +89,7 @@ namespace GRUI
                         Console.ReadLine();
                         }
                         break;
-                    case "4":
+                    case "5":
                         stay = false;
                         Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
@@ -169,6 +174,10 @@ namespace GRUI
             {
                 Console.WriteLine(foundRecord.ToString());
             }
+        }
+        public void BuyRecords()
+        {
+            
         }
     }
 }

@@ -1,5 +1,9 @@
 --Table drop sequence
-drop table inventories; --dependent on records and inventories
+drop table orderproducts --dependent on orders, records
+drop table orders --dependent on records, customers, location
+drop table cart --dependent on on orders, customer, cartproducts
+drop table cartproducts --dependent on cart, records
+drop table inventory; --dependent on records and inventories
 drop table records; --dependent on the enums
 drop table customers;
 drop table genre;
@@ -52,20 +56,46 @@ create table customers
 	eMail varchar(100) not null,
 	address varchar(100) not null,
 	zip int not null,
-	)
+);
 create table locations
 (
 	id int identity(100,100) primary key,
 	locName nvarchar(100) not null
 );
-
-create table inventories
+create table inventory
 (
 	idInv int primary key,
 	idRec int references records(id),
 	idLoc int references locations(id)
 
 );
+create table cartproducts
+(
+	id int primary key,
+	idProd int references records(id),
+	productQuant int not null,
+)
+create table cart
+(
+	id int primary key,
+	idCust int references customers(id),
+	idCartProd int references cartproducts(id),
+)
+create table orders
+(
+	id int primary key,
+	location int references locations(id),
+	idCart int references cart(id),
+	o_date date not null
+)
+create table orderproducts
+(
+	id int primary key,
+	idproducts int references records(id),
+	idorder int references orders(id)
+)
+
+
 
 --Adding seed data
 --Filling in enum values
@@ -88,13 +118,15 @@ insert into locations (locName) values
 ('Philadelphia, PA'), ('New York City, NY')
 
 insert into customers (fName, lName, eMail, address, zip) values
-('john', 'doe', 'johndoe@gmail.com', '1234 Real St.', '12345')
+('john', 'doe', 'johndoe@gmail.com', '1234 Real St.', '12345'), ('Guy', 'Fieri', 'officialguyfieri@gmail.com', '345 Flavor St.', 49492)
 
-insert into inventories (idInv, idRec, idLoc) values
+insert into inventory(idInv, idRec, idLoc) values
 (1,1000,100), (2,1001,100), (3,1002,200),(4,1003,100),(5,1002,100)
 
 --Check data
 select * from records
+select count(*) from records
 select * from locations
 select * from customers
-select * from inventories where idLoc = 100
+select * from inventory
+select * from inventory where idLoc = 100

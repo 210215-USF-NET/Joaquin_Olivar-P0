@@ -9,7 +9,9 @@ namespace GRDL.Entities
     {
         public Record()
         {
+            Cartproducts = new HashSet<Cartproduct>();
             Inventories = new HashSet<Inventory>();
+            Orderproducts = new HashSet<Orderproduct>();
         }
 
         public int Id { get; set; }
@@ -23,6 +25,8 @@ namespace GRDL.Entities
         public virtual Condition ConditionNavigation { get; set; }
         public virtual Genre GenreNavigation { get; set; }
         public virtual RecFormat RecFormatNavigation { get; set; }
+        public virtual ICollection<Cartproduct> Cartproducts { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual ICollection<Orderproduct> Orderproducts { get; set; }
     }
 }
