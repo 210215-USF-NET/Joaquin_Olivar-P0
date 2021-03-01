@@ -9,8 +9,8 @@ namespace GRDL
     public class RecordRepoDB : IRecordRepo
     {
         private Entity.GRdatabaseContext _context;
-        private IMapper _mapper;
-        public RecordRepoDB(Entity.GRdatabaseContext context, IMapper mapper)
+        private IRecordMapper _mapper;
+        public RecordRepoDB(Entity.GRdatabaseContext context, IRecordMapper mapper)
         {
             _context = context;
             _mapper = mapper;

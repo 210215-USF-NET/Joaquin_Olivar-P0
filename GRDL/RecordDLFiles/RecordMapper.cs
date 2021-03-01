@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GRDL
 {
-    public class RecordMapper : IMapper
+    public class RecordMapper : IRecordMapper
     {
         public Model.Record ParseRecord(Entity.Record record)
         {

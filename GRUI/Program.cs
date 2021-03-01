@@ -13,6 +13,7 @@ namespace GRUI
     {
         static void Main(string[] args)
         {
+            //Context
             var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json").Build();
@@ -22,6 +23,7 @@ namespace GRUI
             .UseSqlServer(connectionString).Options;
 
             using var context = new GRdatabaseContext(options);
+            //End context
 
             IMenu menu = new MainMenu(new RecordBL(new RecordRepoDB(context, new RecordMapper())),new CustomerBL(new CustomerRepoFile()));
             menu.Start();
