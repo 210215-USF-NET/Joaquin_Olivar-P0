@@ -177,6 +177,7 @@ namespace GRUI
         }
         public void BuyRecords()
         {
+            Console.WriteLine("Which record would you like to buy?");
             
         }
     }

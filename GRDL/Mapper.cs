@@ -132,9 +132,9 @@ namespace GRDL
             };
         }
 
-        public Orders ParseOrder(Order order)
+        public Model.Order ParseOrder(Entity.Order order)
         {
-            return new Model.Orders
+            return new Model.Order
             {
                 OrdID = order.Id,
                 localID = order.Location,
@@ -144,7 +144,7 @@ namespace GRDL
             };
         }
 
-        public Order ParseOrder(Orders order)
+        public Entity.Order ParseOrder(Model.Order order)
         {
             return new Entity.Order
             {
