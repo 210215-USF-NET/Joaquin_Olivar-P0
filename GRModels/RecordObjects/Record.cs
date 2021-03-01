@@ -3,6 +3,7 @@ namespace GRModels
 {
     public class Record
     {
+        public int RecID;
         private string recordName;
 
         public string RecordName{

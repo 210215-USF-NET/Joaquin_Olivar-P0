@@ -3,6 +3,7 @@ namespace GRModels
 {
     public class Customer
     {
+        public int CustomerID {get; set;}
         private string firstName;
         public string FirstName 
         {
