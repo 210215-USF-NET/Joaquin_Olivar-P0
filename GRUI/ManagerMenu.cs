@@ -20,9 +20,10 @@ namespace GRUI
             {
                 Console.WriteLine("Hello manager.");
                 Console.WriteLine("[0] Add record to inventory.");
-                Console.WriteLine("[1] View customers.");
-                Console.WriteLine("[2] View store inventories.");
-                Console.WriteLine("[3] Log out.");
+                Console.WriteLine("[1] View all customers.");
+                Console.WriteLine("[2] Search customer.");
+                Console.WriteLine("[3] View store inventories.");
+                Console.WriteLine("[4] Log out.");
                 string userInput = Console.ReadLine();
                 switch(userInput)
                 {
@@ -33,9 +34,12 @@ namespace GRUI
                     GetCustomers();
                     break;
                     case "2":
-                    GetRecords();
+                    SearchCustomers();
                     break;
                     case "3":
+                    GetRecords();
+                    break;
+                    case "4":
                     stay = false;
                     Console.WriteLine("Logged out. Returning you to main menu...");
                     Console.WriteLine(MainMenu.linebreak);
@@ -53,7 +57,6 @@ namespace GRUI
                 Console.WriteLine("Choose location: ");
                 Console.WriteLine("[0] Philadelphia, PA");
                 Console.WriteLine("[1] New York City, NY");
-
                 Console.WriteLine("[2] Go back.");
                 string userInput = Console.ReadLine();
                 switch(userInput)
@@ -169,6 +172,19 @@ namespace GRUI
             }
             Console.WriteLine(MainMenu.presskey);
             Console.ReadLine();
-        } 
+        }
+        public void SearchCustomers()
+        {
+            Console.WriteLine("Enter customer name: ");
+            Customer foundCustomer = _customerBL.SearchCustomerByName(Console.ReadLine());
+            if (foundCustomer == null)
+            {
+                Console.WriteLine("No customers found.");
+            }
+            else
+            {
+                Console.WriteLine(foundCustomer.ToString());
+            }
+        }
     }
 }

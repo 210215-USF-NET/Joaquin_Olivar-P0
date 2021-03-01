@@ -28,5 +28,10 @@ namespace GRDL
         {
             return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList();
         }
+
+        public Customer SearchCustomerByName(string name)
+        {
+            return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList().FirstOrDefault(x => x.FirstName == name);
+        }
     }
 }

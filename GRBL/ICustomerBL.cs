@@ -6,5 +6,6 @@ namespace GRBL
     {
         List<Customer> GetCustomers();
         void AddCustomer(Customer newCustomer);
+        Customer SearchCustomerByName(string name);
     }
 }

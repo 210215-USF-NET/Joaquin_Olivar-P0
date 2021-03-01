@@ -15,5 +15,10 @@ namespace GRDL
             Location.AllCustomers.Add(newCustomer);
             return newCustomer;
         }
+
+        public Customer SearchCustomerByName(string name)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

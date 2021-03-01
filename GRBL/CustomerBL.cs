@@ -21,5 +21,10 @@ namespace GRBL
         {
             return _repo.GetCustomers();
         }
+
+        public Customer SearchCustomerByName(string name)
+        {
+            return _repo.SearchCustomerByName(name);
+        }
     }
 }

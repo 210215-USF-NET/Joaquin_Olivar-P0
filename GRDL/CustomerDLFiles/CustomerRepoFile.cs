@@ -32,5 +32,10 @@ namespace GRDL
             }
             return JsonSerializer.Deserialize<List<Customer>>(jsonString);
         }
+
+        public Customer SearchCustomerByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
