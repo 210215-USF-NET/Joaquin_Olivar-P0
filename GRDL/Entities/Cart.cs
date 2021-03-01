@@ -9,15 +9,15 @@ namespace GRDL.Entities
     {
         public Cart()
         {
+            Cartproducts = new HashSet<Cartproduct>();
             Orders = new HashSet<Order>();
         }
 
         public int Id { get; set; }
         public int? IdCust { get; set; }
-        public int? IdCartProd { get; set; }
 
-        public virtual Cartproduct IdCartProdNavigation { get; set; }
         public virtual Customer IdCustNavigation { get; set; }
+        public virtual ICollection<Cartproduct> Cartproducts { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }
