@@ -71,14 +71,18 @@ namespace GRUI
             Console.WriteLine(MainMenu.linebreak);
 
             //Order confirmation and total
-            float total = 0;
+            float total = 0; //TODO: Convert prices from floats to decimal
             Console.WriteLine("Confirm order: ");
+            Console.WriteLine(MainMenu.linebreak);
             List<CartProducts> cartProdList = _cartproductsBL.GetCartProducts();
             foreach(CartProducts c in cartProdList)
             {
                 Record boughtRecord = _recordBL.SearchRecordByID(c.RecID);
+                float subtotal = c.RecQuan * boughtRecord.Price;
                 Console.WriteLine(boughtRecord.ToString());
-                total = total + boughtRecord.Price;
+                Console.WriteLine("Quantity: " + c.RecQuan);
+                Console.WriteLine(MainMenu.linebreak);
+                total = total + subtotal;
             }
             Console.WriteLine("Total: " + total);
             
