@@ -30,5 +30,11 @@ namespace GRDL
         {
             return _context.Cartproducts.Select(x => _mapper.ParseCartProducts(x)).ToList();
         }
+
+        public void PurgeCartProducts(CartProducts cartProductsforDeletion)
+        {
+            _context.Cartproducts.Remove(_mapper.ParseCartProducts(cartProductsforDeletion));
+            _context.SaveChanges();
+        }
     }
 }

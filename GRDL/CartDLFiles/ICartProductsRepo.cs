@@ -6,5 +6,6 @@ namespace GRDL
     {
         CartProducts AddToCartProducts(int RecID, int RecQuan);
         List<CartProducts> GetCartProducts();
+        void PurgeCartProducts(CartProducts cartProductsforDeletion);
     }
 }

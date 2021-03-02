@@ -74,6 +74,8 @@ namespace GRUI
                 Console.WriteLine(MainMenu.linebreak);
                 Console.WriteLine("How many would you like to buy?");
                 int BuyerQuan = Int32.Parse(Console.ReadLine());
+
+            //New cartProducts
             CartProducts cartProducts = _cartproductsBL.AddToCartProducts(foundRecord.RecID, BuyerQuan);
             Console.WriteLine(MainMenu.linebreak);
 
@@ -110,7 +112,10 @@ namespace GRUI
             orderProcessed.RecQuan = cartProducts.RecQuan;
             
             _orderproductsBL.addOrderProducts(orderProcessed);
-            //_cartproductsBL.PurgeCartProducts()
+            foreach(CartProducts c in cartProdList)
+            {
+            _cartproductsBL.PurgeCartProducts(c);
+            }
             //_cartBL.PurgeCart(cart)
             
         }

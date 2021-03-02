@@ -20,5 +20,10 @@ namespace GRBL
         {
             return _repo.GetCartProducts();
         }
+
+        public void PurgeCartProducts(CartProducts cartProductsforDeletion)
+        {
+            _repo.PurgeCartProducts(cartProductsforDeletion);
+        }
     }
 }
