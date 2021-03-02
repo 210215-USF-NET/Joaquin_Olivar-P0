@@ -55,7 +55,9 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())), new LocationBL(new LocationRepoDB(context, new Mapper())), new CartBL(new CartRepoDB(context, new Mapper())));
+                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
+                        new CustomerBL(new CustomerRepoDB(context, new Mapper())),new LocationBL(new LocationRepoDB(context, new Mapper())),
+                        new CartBL(new CartRepoDB(context, new Mapper())), new InventoryBL(new InventoryRepoDB(context, new Mapper())));
                         buymenu.Start();
                         break;
                     case "2":

@@ -3,6 +3,6 @@ namespace GRDL
 {
     public interface ICartRepo
     {
-        Cart NewCart(Cart newCart);
+        Cart NewCart(int customerID);
     }
 }

@@ -18,7 +18,8 @@ namespace GRDL
                 GenreType = (Model.Genre) record.Genre,
                 daFormat = (Model.Format) record.RecFormat,
                 daCondition = (Model.Condition) record.Condition,
-                Price = (float) record.Price
+                Price = (float) record.Price,
+                RecID = record.Id
 
             };
         }
@@ -32,7 +33,8 @@ namespace GRDL
                 Genre = (int) record.GenreType,
                 RecFormat = (int) record.daFormat,
                 Condition = (int) record.daCondition,
-                Price = record.Price
+                Price = record.Price,
+                Id = record.RecID
             };
         }
         public Model.Customer ParseCustomer(Entity.Customer customer)
@@ -43,7 +45,8 @@ namespace GRDL
                 LastName = customer.LName,
                 Email = customer.EMail,
                 Address = customer.Address,
-                ZipCode = customer.Zip
+                ZipCode = customer.Zip,
+                CustomerID = customer.Id
             };
         }
 
@@ -55,7 +58,8 @@ namespace GRDL
                 LName = customer.LastName,
                 EMail = customer.LastName,
                 Address = customer.Address,
-                Zip = customer.ZipCode 
+                Zip = customer.ZipCode,
+                Id = customer.CustomerID
             };
         }
         public Model.LocationClass ParseLocation(Entity.Location location)

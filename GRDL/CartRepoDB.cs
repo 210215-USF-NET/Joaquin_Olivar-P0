@@ -14,11 +14,13 @@ namespace GRDL
             _context = context;
             _mapper = mapper;
         }
-        public Model.Cart NewCart(Model.Cart newCart)
+        public Model.Cart NewCart(int customerID)
         {
-            _context.Carts.Add(_mapper.ParseCart(newCart));
+            Entity.Cart newCart = new Entity.Cart();
+            newCart.IdCust = customerID;
+            _context.Carts.Add(newCart);
             _context.SaveChanges();
-            return newCart;
+            return _mapper.ParseCart(newCart);
         }
     }
 }

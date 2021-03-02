@@ -9,9 +9,9 @@ namespace GRBL
         {
             _repo = repo;
         }
-        public Cart newCart(Cart newCart)
+        public Cart newCart(int customerID)
         {
-            return _repo.NewCart(newCart);
+            return _repo.NewCart(customerID);
         }
     }
 }
