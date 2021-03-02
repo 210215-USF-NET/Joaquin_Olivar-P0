@@ -10,6 +10,7 @@ namespace GRDL.Entities
         public int Id { get; set; }
         public int Idproducts { get; set; }
         public int Idorder { get; set; }
+        public int Productnumb { get; set; }
 
         public virtual Order IdorderNavigation { get; set; }
         public virtual Record IdproductsNavigation { get; set; }

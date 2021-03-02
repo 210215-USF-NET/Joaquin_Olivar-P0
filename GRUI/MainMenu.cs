@@ -55,8 +55,8 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        Console.WriteLine("Work in progress.");
-                        //BuyRecords();
+                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())));
+                        buymenu.Start();
                         break;
                     case "2":
                         GetRecords();
@@ -174,11 +174,6 @@ namespace GRUI
             {
                 Console.WriteLine(foundRecord.ToString());
             }
-        }
-        public void BuyRecords()
-        {
-            Console.WriteLine("Which record would you like to buy?");
-            
         }
     }
 }

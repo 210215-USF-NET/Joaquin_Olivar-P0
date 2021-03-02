@@ -5,5 +5,6 @@ namespace GRModels
         public int OrdProdId {get; set;}
         public int RecID {get; set;}
         public int OrdID {get; set;}
+        public int RecQuan {get; set;}
     }
 }

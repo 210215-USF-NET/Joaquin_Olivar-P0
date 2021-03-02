@@ -10,6 +10,7 @@ namespace GRDL.Entities
         public int IdInv { get; set; }
         public int IdRec { get; set; }
         public int IdLoc { get; set; }
+        public int NumbRec { get; set; }
 
         public virtual Location IdLocNavigation { get; set; }
         public virtual Record IdRecNavigation { get; set; }

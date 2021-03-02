@@ -97,7 +97,8 @@ namespace GRDL
             {
                 CPID = cartproduct.Id,
                 RecID = cartproduct.IdProd,
-                CartID = cartproduct.IdCart
+                CartID = cartproduct.IdCart,
+                RecQuan = cartproduct.ProductQuant
             };
         }
 
@@ -107,7 +108,8 @@ namespace GRDL
             {
                 Id = cartproduct.CPID,
                 IdProd = cartproduct.RecID,
-                IdCart = cartproduct.CartID
+                IdCart = cartproduct.CartID,
+                ProductQuant = cartproduct.RecQuan
             };
         }
 
@@ -118,7 +120,8 @@ namespace GRDL
             {
                 InvID = inventory.IdInv,
                 RecID = inventory.IdRec,
-                LocID = inventory.IdLoc
+                LocID = inventory.IdLoc,
+                RecQuan = inventory.NumbRec
             };
         }
 
@@ -128,7 +131,8 @@ namespace GRDL
             {
                 IdInv = inventory.InvID,
                 IdRec = inventory.RecID,
-                IdLoc = inventory.LocID
+                IdLoc = inventory.LocID,
+                NumbRec = inventory.RecQuan
             };
         }
 
@@ -161,7 +165,9 @@ namespace GRDL
             {
                 OrdProdId = orderproduct.Id,
                 RecID = orderproduct.Idproducts,
-                OrdID = orderproduct.Idorder
+                OrdID = orderproduct.Idorder,
+                RecQuan = orderproduct.Productnumb
+                
             };
         }
 
@@ -171,7 +177,8 @@ namespace GRDL
             {
                 Id = orderproduct.OrdProdId,
                 Idproducts = orderproduct.RecID,
-                Idorder = orderproduct.OrdID
+                Idorder = orderproduct.OrdID,
+                Productnumb = orderproduct.RecQuan
             };
         }
     }

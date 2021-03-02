@@ -28,7 +28,6 @@ namespace GRDL.Entities
         public virtual DbSet<Orderproduct> Orderproducts { get; set; }
         public virtual DbSet<RecFormat> RecFormats { get; set; }
         public virtual DbSet<Record> Records { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -47,7 +46,7 @@ namespace GRDL.Entities
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.IdCust)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cart__idCust__7345FA8E");
+                    .HasConstraintName("FK__cart__idCust__32024716");
             });
 
             modelBuilder.Entity<Cartproduct>(entity =>
@@ -68,13 +67,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Cartproducts)
                     .HasForeignKey(d => d.IdCart)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cartprodu__idCar__77168B72");
+                    .HasConstraintName("FK__cartprodu__idCar__35D2D7FA");
 
                 entity.HasOne(d => d.IdProdNavigation)
                     .WithMany(p => p.Cartproducts)
                     .HasForeignKey(d => d.IdProd)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cartprodu__idPro__76226739");
+                    .HasConstraintName("FK__cartprodu__idPro__34DEB3C1");
             });
 
             modelBuilder.Entity<Condition>(entity =>
@@ -139,7 +138,7 @@ namespace GRDL.Entities
             modelBuilder.Entity<Inventory>(entity =>
             {
                 entity.HasKey(e => e.IdInv)
-                    .HasName("PK__inventor__3C3EB36AF6CB33E4");
+                    .HasName("PK__inventor__3C3EB36A67A0DF14");
 
                 entity.ToTable("inventory");
 
@@ -155,13 +154,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.IdLoc)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__inventory__idLoc__70698DE3");
+                    .HasConstraintName("FK__inventory__idLoc__2F25DA6B");
 
                 entity.HasOne(d => d.IdRecNavigation)
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.IdRec)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__inventory__idRec__6F7569AA");
+                    .HasConstraintName("FK__inventory__idRec__2E31B632");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -196,13 +195,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdCart)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__idCart__7AE71C56");
+                    .HasConstraintName("FK__orders__idCart__39A368DE");
 
                 entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Location)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__location__79F2F81D");
+                    .HasConstraintName("FK__orders__location__38AF44A5");
             });
 
             modelBuilder.Entity<Orderproduct>(entity =>
@@ -217,17 +216,19 @@ namespace GRDL.Entities
 
                 entity.Property(e => e.Idproducts).HasColumnName("idproducts");
 
+                entity.Property(e => e.Productnumb).HasColumnName("productnumb");
+
                 entity.HasOne(d => d.IdorderNavigation)
                     .WithMany(p => p.Orderproducts)
                     .HasForeignKey(d => d.Idorder)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orderprod__idord__7EB7AD3A");
+                    .HasConstraintName("FK__orderprod__idord__3D73F9C2");
 
                 entity.HasOne(d => d.IdproductsNavigation)
                     .WithMany(p => p.Orderproducts)
                     .HasForeignKey(d => d.Idproducts)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orderprod__idpro__7DC38901");
+                    .HasConstraintName("FK__orderprod__idpro__3C7FD589");
             });
 
             modelBuilder.Entity<RecFormat>(entity =>
@@ -270,17 +271,17 @@ namespace GRDL.Entities
                 entity.HasOne(d => d.ConditionNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.Condition)
-                    .HasConstraintName("FK__records__conditi__67D447E2");
+                    .HasConstraintName("FK__records__conditi__2690946A");
 
                 entity.HasOne(d => d.GenreNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.Genre)
-                    .HasConstraintName("FK__records__genre__66E023A9");
+                    .HasConstraintName("FK__records__genre__259C7031");
 
                 entity.HasOne(d => d.RecFormatNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.RecFormat)
-                    .HasConstraintName("FK__records__recForm__68C86C1B");
+                    .HasConstraintName("FK__records__recForm__2784B8A3");
             });
 
             OnModelCreatingPartial(modelBuilder);
