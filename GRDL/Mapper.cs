@@ -66,14 +66,16 @@ namespace GRDL
         {
             return new Model.LocationClass
             {
-                localName = location.LocName
+                localName = location.LocName,
+                localID = location.Id
             };
         }
         public Entity.Location ParseLocation(Model.LocationClass location)
         {
             return new Entity.Location
             {
-                LocName = location.localName
+                LocName = location.localName,
+                Id = location.localID
             };
         }
 
