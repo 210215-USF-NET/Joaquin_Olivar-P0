@@ -13,9 +13,12 @@ namespace GRUI
         private ICartBL _cartBL;
         private I_InventoryBL _inventoryBL;
         private ICartProductsBL _cartproductsBL;
+        private IOrderBL _orderBL;
+        private IOrderProductsBL _orderproductsBL;
 
         public BuyRecordMenu(IRecordBL recordBL, ICustomerBL customerBL, ILocationBL locationBL,
-        ICartBL cartBL, ICartProductsBL cartproductsBL, I_InventoryBL inventoryBL)
+        ICartBL cartBL, ICartProductsBL cartproductsBL, I_InventoryBL inventoryBL, IOrderBL orderBL,
+        IOrderProductsBL orderproductsBL)
         {
             _recordBL = recordBL;
             _customerBL = customerBL;
@@ -23,6 +26,8 @@ namespace GRUI
             _cartBL = cartBL;
             _cartproductsBL = cartproductsBL;
             _inventoryBL = inventoryBL;
+            _orderBL = orderBL;
+            _orderproductsBL = orderproductsBL;
         }
         public void Start()
         {   
@@ -55,6 +60,8 @@ namespace GRUI
                     city_inventory.Add(i);
                 }
             }
+            //TODO: Actually sort records from inventory
+
             Console.WriteLine("Which record would you like to buy?");
             Console.WriteLine("Enter record name: ");
             Record foundRecord = _recordBL.SearchRecordByName(Console.ReadLine());
@@ -92,6 +99,20 @@ namespace GRUI
             finalOrder.CusID = buyer.CustomerID;
             finalOrder.localID = 100;
             finalOrder.OrDate = DateTime.Now;
+
+            _orderBL.AddOrder(finalOrder);
+            
+            //adding orderProducts to database
+            OrderProducts orderProcessed = new OrderProducts();
+            orderProcessed.RecQuan = 0;
+            orderProcessed.OrdID = finalOrder.OrdID;
+            orderProcessed.RecID = cartProducts.RecID;
+            orderProcessed.RecQuan = cartProducts.RecQuan;
+            
+            _orderproductsBL.addOrderProducts(orderProcessed);
+            //_cartproductsBL.PurgeCartProducts()
+            //_cartBL.PurgeCart(cart)
+            
         }
     }
 

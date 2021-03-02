@@ -27,8 +27,8 @@ Add as much models as you would need for your design
 - Input validation
 - Logging (to a file, no logging to the console)
 - At least 10 unit tests
-- Data should be persisted, (no data should be hard coded)
-- You should use a DB to store data
+- Data should be persisted, (no data should be hard coded) [Done]
+- You should use a DB to store data [Done]
 - DB structure should be 3NF
 - Should have an ER Diagram
 - Code should have xml documentation
