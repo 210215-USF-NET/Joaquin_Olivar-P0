@@ -3,6 +3,7 @@ using Entity = GRDL.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using GRModels;
+using System.Collections.Generic;
 
 namespace GRDL
 {
@@ -23,6 +24,11 @@ namespace GRDL
             _context.Cartproducts.Add(newCartproduct);
             _context.SaveChanges();
             return _mapper.ParseCartProducts(newCartproduct);
+        }
+
+        public List<CartProducts> GetCartProducts()
+        {
+            return _context.Cartproducts.Select(x => _mapper.ParseCartProducts(x)).ToList();
         }
     }
 }

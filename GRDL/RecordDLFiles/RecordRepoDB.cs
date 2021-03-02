@@ -43,6 +43,11 @@ namespace GRDL
             return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList();
         }
 
+        public Record SearchRecordByID(int RecID)
+        {
+            return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList().FirstOrDefault(x => x.RecID == RecID);
+        }
+
         public Record SearchRecordByName(string name)
         {
             return _context.Records.Select(x => _mapper.ParseRecord(x)).ToList().FirstOrDefault(x => x.RecordName == name);

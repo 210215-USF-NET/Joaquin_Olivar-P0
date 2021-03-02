@@ -30,5 +30,10 @@ namespace GRDL
         {
             throw new System.NotImplementedException();
         }
+
+        public Record SearchRecordByID(int RecID)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

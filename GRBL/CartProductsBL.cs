@@ -1,5 +1,7 @@
 using GRModels;
 using GRDL;
+using System.Collections.Generic;
+
 namespace GRBL
 {
     public class CartProductsBL : ICartProductsBL
@@ -12,6 +14,11 @@ namespace GRBL
         public CartProducts AddToCartProducts(int RecID, int RecQuan)
         {
             return _repo.AddToCartProducts(RecID, RecQuan);
+        }
+
+        public List<CartProducts> GetCartProducts()
+        {
+            return _repo.GetCartProducts();
         }
     }
 }

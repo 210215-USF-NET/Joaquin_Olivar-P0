@@ -68,7 +68,22 @@ namespace GRUI
                 Console.WriteLine("How many would you like to buy?");
                 int BuyerQuan = Int32.Parse(Console.ReadLine());
             CartProducts cartProducts = _cartproductsBL.AddToCartProducts(foundRecord.RecID, BuyerQuan);
+            Console.WriteLine(MainMenu.linebreak);
 
+            //Order confirmation and total
+            float total = 0;
+            Console.WriteLine("Confirm order: ");
+            List<CartProducts> cartProdList = _cartproductsBL.GetCartProducts();
+            foreach(CartProducts c in cartProdList)
+            {
+                Record boughtRecord = _recordBL.SearchRecordByID(c.RecID);
+                Console.WriteLine(boughtRecord.ToString());
+                total = total + boughtRecord.Price;
+            }
+            Console.WriteLine("Total: " + total);
+            
+            
         }
     }
+
 }

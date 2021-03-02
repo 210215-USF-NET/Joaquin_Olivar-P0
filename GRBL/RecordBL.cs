@@ -33,5 +33,10 @@ namespace GRBL
         {
             return _repo.SearchRecordByName(name);
         }
+
+        public Record SearchRecordByID(int RecID)
+        {
+            return _repo.SearchRecordByID(RecID);
+        }
     } 
 }

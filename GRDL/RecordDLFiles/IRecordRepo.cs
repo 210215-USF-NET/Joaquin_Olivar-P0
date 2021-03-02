@@ -11,5 +11,6 @@ namespace GRDL
         Record AddNYCRecord(Record newRecord);
 
         Record SearchRecordByName(string name);
+        Record SearchRecordByID(int RecID);
     }
 }
