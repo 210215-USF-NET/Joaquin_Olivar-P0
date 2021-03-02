@@ -28,6 +28,16 @@ namespace GRDL.Entities
         public virtual DbSet<Orderproduct> Orderproducts { get; set; }
         public virtual DbSet<RecFormat> RecFormats { get; set; }
         public virtual DbSet<Record> Records { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:joaquinolivar-server.database.windows.net,1433;Initial Catalog=GR-database;Persist Security Info=False;User ID=jolivar;Password=Y@ngWenLi800;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -46,7 +56,7 @@ namespace GRDL.Entities
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.IdCust)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cart__idCust__32024716");
+                    .HasConstraintName("FK__cart__idCust__1F6473EE");
             });
 
             modelBuilder.Entity<Cartproduct>(entity =>
@@ -67,13 +77,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Cartproducts)
                     .HasForeignKey(d => d.IdCart)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cartprodu__idCar__35D2D7FA");
+                    .HasConstraintName("FK__cartprodu__idCar__233504D2");
 
                 entity.HasOne(d => d.IdProdNavigation)
                     .WithMany(p => p.Cartproducts)
                     .HasForeignKey(d => d.IdProd)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cartprodu__idPro__34DEB3C1");
+                    .HasConstraintName("FK__cartprodu__idPro__2240E099");
             });
 
             modelBuilder.Entity<Condition>(entity =>
@@ -138,7 +148,7 @@ namespace GRDL.Entities
             modelBuilder.Entity<Inventory>(entity =>
             {
                 entity.HasKey(e => e.IdInv)
-                    .HasName("PK__inventor__3C3EB36A67A0DF14");
+                    .HasName("PK__inventor__3C3EB36A7C63E776");
 
                 entity.ToTable("inventory");
 
@@ -154,13 +164,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.IdLoc)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__inventory__idLoc__2F25DA6B");
+                    .HasConstraintName("FK__inventory__idLoc__1C880743");
 
                 entity.HasOne(d => d.IdRecNavigation)
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.IdRec)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__inventory__idRec__2E31B632");
+                    .HasConstraintName("FK__inventory__idRec__1B93E30A");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -185,6 +195,8 @@ namespace GRDL.Entities
 
                 entity.Property(e => e.IdCart).HasColumnName("idCart");
 
+                entity.Property(e => e.IdCust).HasColumnName("idCust");
+
                 entity.Property(e => e.Location).HasColumnName("location");
 
                 entity.Property(e => e.ODate)
@@ -195,13 +207,19 @@ namespace GRDL.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdCart)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__idCart__39A368DE");
+                    .HasConstraintName("FK__orders__idCart__270595B6");
+
+                entity.HasOne(d => d.IdCustNavigation)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.IdCust)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__orders__idCust__27F9B9EF");
 
                 entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Location)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__location__38AF44A5");
+                    .HasConstraintName("FK__orders__location__2611717D");
             });
 
             modelBuilder.Entity<Orderproduct>(entity =>
@@ -222,13 +240,13 @@ namespace GRDL.Entities
                     .WithMany(p => p.Orderproducts)
                     .HasForeignKey(d => d.Idorder)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orderprod__idord__3D73F9C2");
+                    .HasConstraintName("FK__orderprod__idord__2BCA4AD3");
 
                 entity.HasOne(d => d.IdproductsNavigation)
                     .WithMany(p => p.Orderproducts)
                     .HasForeignKey(d => d.Idproducts)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orderprod__idpro__3C7FD589");
+                    .HasConstraintName("FK__orderprod__idpro__2AD6269A");
             });
 
             modelBuilder.Entity<RecFormat>(entity =>
@@ -271,17 +289,17 @@ namespace GRDL.Entities
                 entity.HasOne(d => d.ConditionNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.Condition)
-                    .HasConstraintName("FK__records__conditi__2690946A");
+                    .HasConstraintName("FK__records__conditi__13F2C142");
 
                 entity.HasOne(d => d.GenreNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.Genre)
-                    .HasConstraintName("FK__records__genre__259C7031");
+                    .HasConstraintName("FK__records__genre__12FE9D09");
 
                 entity.HasOne(d => d.RecFormatNavigation)
                     .WithMany(p => p.Records)
                     .HasForeignKey(d => d.RecFormat)
-                    .HasConstraintName("FK__records__recForm__2784B8A3");
+                    .HasConstraintName("FK__records__recForm__14E6E57B");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -150,7 +150,7 @@ namespace GRDL
                 localID = order.Location,
                 CartID = order.IdCart,
                 OrDate = order.ODate,
-
+                CusID = order.IdCust
             };
         }
 
@@ -161,7 +161,8 @@ namespace GRDL
                 Id = order.OrdID,
                 Location = order.localID,
                 IdCart = order.CartID,
-                ODate = order.OrDate
+                ODate = order.OrDate,
+                IdCust = order.CusID
             };
         }
 
@@ -173,7 +174,6 @@ namespace GRDL
                 RecID = orderproduct.Idproducts,
                 OrdID = orderproduct.Idorder,
                 RecQuan = orderproduct.Productnumb
-                
             };
         }
 

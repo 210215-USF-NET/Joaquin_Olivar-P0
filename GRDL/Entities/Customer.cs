@@ -10,6 +10,7 @@ namespace GRDL.Entities
         public Customer()
         {
             Carts = new HashSet<Cart>();
+            Orders = new HashSet<Order>();
         }
 
         public int Id { get; set; }
@@ -20,5 +21,6 @@ namespace GRDL.Entities
         public int Zip { get; set; }
 
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
