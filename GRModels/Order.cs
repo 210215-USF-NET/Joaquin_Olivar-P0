@@ -8,5 +8,6 @@ namespace GRModels
         public int localID {get; set;}
         public DateTime OrDate {get; set;}
         public Customer Customer {get; set;}
+        public int CusID {get; set;}
     }
 }

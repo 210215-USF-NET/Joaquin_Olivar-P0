@@ -86,7 +86,12 @@ namespace GRUI
             }
             Console.WriteLine("Total: " + total);
             
-            
+            Order finalOrder = new Order();
+            finalOrder.CartID = cart.CartID;
+            finalOrder.Customer = buyer;
+            finalOrder.CusID = buyer.CustomerID;
+            finalOrder.localID = 100;
+            finalOrder.OrDate = DateTime.Now;
         }
     }
 
