@@ -16,7 +16,6 @@ namespace GRBL
         {
             _repo.AddCustomer(newCustomer);
         }
-
         public List<Customer> GetCustomers()
         {
             return _repo.GetCustomers();

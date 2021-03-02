@@ -12,11 +12,13 @@ namespace GRUI
     public class MainMenu : IMenu
     {
         private IRecordBL _recordBL;
-        private ICustomerBL _customerBL; 
-        public MainMenu(IRecordBL recordBL, ICustomerBL customerBL)
+        private ICustomerBL _customerBL;
+        private ILocationBL _locationBL; 
+        public MainMenu(IRecordBL recordBL, ICustomerBL customerBL, ILocationBL locationBL)
         {
             _recordBL = recordBL;
             _customerBL = customerBL;
+            _locationBL = locationBL;
         }
 
         public static string linebreak = "------------------------";
@@ -55,7 +57,7 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())));
+                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())), new LocationBL(new LocationRepoDB(context, new Mapper())));
                         buymenu.Start();
                         break;
                     case "2":
