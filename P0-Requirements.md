@@ -6,12 +6,12 @@ The store app is a software that helps customers purchase products from your bus
 - add a new customer [Done]
 - search customers by name [Done]
 - display details of an order [Done]
-- place orders to store locations for customers [1/2 Done]
-- view order history of customer
+- place orders to store locations for customers [Done]
+- view order history of customer [Done]
 - view order history of location
-- view location inventory [1/2 Done]
+- view location inventory [Done]
 - The customer should be able to purchase multiple products [Done]
-- Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive)
+- Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive) [Done]
 - The manager should be able to replenish inventory [Done]
 
 ## Models
@@ -25,7 +25,7 @@ Add as much models as you would need for your design
 ## Additional requirements
 - Exception Handling
 - Input validation
-- Logging (to a file, no logging to the console)
+- Logging (to a file, no logging to the console) [Done]
 - At least 10 unit tests
 - Data should be persisted, (no data should be hard coded) [Done]
 - You should use a DB to store data [Done]

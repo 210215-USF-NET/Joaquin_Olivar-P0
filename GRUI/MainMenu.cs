@@ -43,7 +43,7 @@ namespace GRUI
                 Console.WriteLine("[0] Create an account.");
                 Console.WriteLine("[1] Buy a record.");
                 Console.WriteLine("[2] Get customer order(s).");
-                Console.WriteLine("[3] View full inventory.");
+                Console.WriteLine("[3] View store inventories.");
                 Console.WriteLine("[4] Search inventory.");
                 Console.WriteLine("[5] Manager login.");
                 Console.WriteLine("[6] Leave.");
