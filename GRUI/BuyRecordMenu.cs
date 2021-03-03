@@ -57,17 +57,22 @@ namespace GRUI
             }
 
             Cart cart = _cartBL.newCart(buyer.CustomerID); //Cart Creation
-            List <Inventory> inventory = _inventoryBL.GetInventory(localWeWant); //Sets inventory to only have location inventory
-            Console.WriteLine(inventory.Count);
-            //TODO: Actually sort records from inventory
-
+            List <Inventory> localinventory = _inventoryBL.GetInventory(localWeWant); //Sets inventory to only have location inventory
+            foreach (Inventory i in localinventory)
+            {
+                Record iR = _recordBL.SearchRecordByID(i.RecID);
+                Console.WriteLine(iR.ToString());
+                Console.WriteLine(MainMenu.linebreak);
+            }
             Console.WriteLine("Which record would you like to buy?");
-            Console.WriteLine("Enter record name: ");
-            Record foundRecord = _recordBL.SearchRecordByName(Console.ReadLine());
+            Console.WriteLine("Enter record ID: ");
+            Record foundRecord = _recordBL.SearchRecordByID(Int32.Parse(Console.ReadLine()));
             if (foundRecord == null)
             {
                 Console.WriteLine("No record found.");
+                return;
             }
+            
 
                 Console.WriteLine(foundRecord.ToString());
                 Console.WriteLine(MainMenu.linebreak);
@@ -105,7 +110,7 @@ namespace GRUI
             finalOrder.CartID = cart.CartID;
             finalOrder.Customer = buyer;
             finalOrder.CusID = buyer.CustomerID;
-            finalOrder.localID = 100;
+            finalOrder.localID = localWeWant;
             finalOrder.OrDate = DateTime.Now;
 
             _orderBL.AddOrder(finalOrder);
