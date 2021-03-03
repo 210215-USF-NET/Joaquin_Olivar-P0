@@ -6,6 +6,7 @@ using Serilog.Formatting.Compact;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace GRUI
 {
@@ -13,6 +14,7 @@ namespace GRUI
     {
         static void Main(string[] args)
         {
+            
             //Context
             var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())

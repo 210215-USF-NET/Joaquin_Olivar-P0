@@ -14,6 +14,7 @@ namespace GRDL
         }
         public void AddOrder(Model.Order order)
         {
+            order.OrdID = RNG.numb.Next(1,1001);
             _context.Orders.Add(_mapper.ParseOrder(order));
             _context.SaveChanges();
         }

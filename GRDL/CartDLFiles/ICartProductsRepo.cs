@@ -4,7 +4,7 @@ namespace GRDL
 {
     public interface ICartProductsRepo
     {
-        CartProducts AddToCartProducts(int RecID, int RecQuan);
+        void AddToCartProducts(CartProducts cartProducts);
         List<CartProducts> GetCartProducts();
         void PurgeCartProducts(CartProducts cartProductsforDeletion);
     }

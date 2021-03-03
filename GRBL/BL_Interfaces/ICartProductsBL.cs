@@ -4,7 +4,7 @@ namespace GRBL
 {
     public interface ICartProductsBL
     {
-        CartProducts AddToCartProducts(int RecID, int RecQuan);
+        void AddToCartProducts(CartProducts cartProducts);
         List<CartProducts> GetCartProducts();
 
         void PurgeCartProducts(CartProducts cartProductsforDeletion);

@@ -2,6 +2,7 @@ using GRModels;
 using Model = GRModels;
 using Entity = GRDL.Entities;
 using System.Linq;
+using System;
 namespace GRDL
 {
     public class CartRepoDB : ICartRepo
@@ -16,7 +17,9 @@ namespace GRDL
         }
         public Model.Cart NewCart(int customerID)
         {
+            
             Entity.Cart newCart = new Entity.Cart();
+            newCart.Id = RNG.numb.Next(1,1001);
             newCart.IdCust = customerID;
             _context.Carts.Add(newCart);
             _context.SaveChanges();

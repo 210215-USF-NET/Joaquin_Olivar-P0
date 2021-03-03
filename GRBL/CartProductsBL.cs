@@ -11,9 +11,9 @@ namespace GRBL
         {
             _repo = repo;
         }
-        public CartProducts AddToCartProducts(int RecID, int RecQuan)
+        public void AddToCartProducts(CartProducts cartProducts)
         {
-            return _repo.AddToCartProducts(RecID, RecQuan);
+            _repo.AddToCartProducts(cartProducts);
         }
 
         public List<CartProducts> GetCartProducts()

@@ -76,7 +76,12 @@ namespace GRUI
                 int BuyerQuan = Int32.Parse(Console.ReadLine());
 
             //New cartProducts
-            CartProducts cartProducts = _cartproductsBL.AddToCartProducts(foundRecord.RecID, BuyerQuan);
+            CartProducts cartProducts = new CartProducts();
+            cartProducts.RecID = foundRecord.RecID;
+            cartProducts.RecQuan = BuyerQuan;
+            cartProducts.CartID = cart.CartID;
+            //Add cartProducts to database
+            _cartproductsBL.AddToCartProducts(cartProducts);
             Console.WriteLine(MainMenu.linebreak);
 
             //Order confirmation and total
@@ -105,20 +110,21 @@ namespace GRUI
             _orderBL.AddOrder(finalOrder);
             
             //adding orderProducts to database
+            
             OrderProducts orderProcessed = new OrderProducts();
             orderProcessed.RecQuan = 0;
             orderProcessed.OrdID = finalOrder.OrdID;
             orderProcessed.RecID = cartProducts.RecID;
             orderProcessed.RecQuan = cartProducts.RecQuan;
             
+            
             _orderproductsBL.addOrderProducts(orderProcessed);
             foreach(CartProducts c in cartProdList)
             {
-            _cartproductsBL.PurgeCartProducts(c);
+            _cartproductsBL.PurgeCartProducts(cartProducts);
             }
             //_cartBL.PurgeCart(cart)
             
         }
     }
-
 }

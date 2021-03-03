@@ -15,7 +15,7 @@ namespace GRDL
             _mapper = mapper;
         }
         public void AddOrderProducts(Model.OrderProducts orderProducts)
-        {
+        {   orderProducts.OrdProdId = RNG.numb.Next(1,1001);
             _context.Orderproducts.Add(_mapper.ParseOrderProduct(orderProducts));
             _context.SaveChanges();
         }

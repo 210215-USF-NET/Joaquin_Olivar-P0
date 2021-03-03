@@ -16,19 +16,16 @@ namespace GRDL
             _context = context;
             _mapper = mapper;
         }
-        public Model.CartProducts AddToCartProducts(int RecID, int RecQuan)
-        {
-            Entity.Cartproduct newCartproduct = new Entity.Cartproduct();
-            newCartproduct.IdProd = RecID;
-            newCartproduct.ProductQuant = RecQuan;
-            _context.Cartproducts.Add(newCartproduct);
+        public void AddToCartProducts(CartProducts cartProducts)
+        {   
+            cartProducts.CPID = RNG.numb.Next(1,1001);
+            _context.Cartproducts.Add(_mapper.ParseCartProducts(cartProducts));
             _context.SaveChanges();
-            return _mapper.ParseCartProducts(newCartproduct);
         }
 
         public List<CartProducts> GetCartProducts()
         {
-            return _context.Cartproducts.Select(x => _mapper.ParseCartProducts(x)).ToList();
+            return _context.Cartproducts.Select(x => _mapper.ParseCartProducts(x)).AsNoTracking().ToList();
         }
 
         public void PurgeCartProducts(CartProducts cartProductsforDeletion)
