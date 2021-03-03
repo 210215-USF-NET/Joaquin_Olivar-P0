@@ -41,11 +41,12 @@ namespace GRUI
                 Console.WriteLine("Welcome to Gud Records Music Store!");
                 Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
-                Console.WriteLine("[1] Buy stuff.");
-                Console.WriteLine("[2] View full inventory.");
-                Console.WriteLine("[3] Search inventory.");
-                Console.WriteLine("[4] Manager login.");
-                Console.WriteLine("[5] Leave.");
+                Console.WriteLine("[1] Buy a record.");
+                Console.WriteLine("[2] Search for an order.");
+                Console.WriteLine("[3] View full inventory.");
+                Console.WriteLine("[4] Search inventory.");
+                Console.WriteLine("[5] Manager login.");
+                Console.WriteLine("[6] Leave.");
 
                 //Get user input
                 string userInput = Console.ReadLine();
@@ -63,12 +64,20 @@ namespace GRUI
                         buymenu.Start();
                         break;
                     case "2":
-                        GetRecords();
+                        IMenu searchmenu = new ViewOrderHistoryMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
+                        new CustomerBL(new CustomerRepoDB(context, new Mapper())),new LocationBL(new LocationRepoDB(context, new Mapper())),
+                        new CartBL(new CartRepoDB(context, new Mapper())), new CartProductsBL(new CartProductsDB(context, new Mapper())),
+                        new InventoryBL(new InventoryRepoDB(context, new Mapper())), new OrderBL(new OrderRepoDB(context, new Mapper())),
+                        new OrderProductsBL(new OrderProductsRepoDB(context, new Mapper())));
+                        searchmenu.Start();
                         break;
                     case "3":
-                        SearchRecords();
+                        GetRecords();
                         break;
                     case "4":
+                        SearchRecords();
+                        break;
+                    case "5":
                         Console.WriteLine("Enter username: ");
                         if(Console.ReadLine() == Manager.userName)
                         {
@@ -93,7 +102,7 @@ namespace GRUI
                         Console.ReadLine();
                         }
                         break;
-                    case "5":
+                    case "6":
                         stay = false;
                         Console.WriteLine("Thank you for shopping at Gud Records!");
                         break;
@@ -119,7 +128,7 @@ namespace GRUI
             Console.WriteLine("Enter address:");
             newCustomer.Address = Console.ReadLine();
             Console.WriteLine("Enter zip code:");
-            newCustomer.ZipCode = Int16.Parse(Console.ReadLine());
+            newCustomer.ZipCode = Int32.Parse(Console.ReadLine());
 
             //Reading back customer information.
             _customerBL.AddCustomer(newCustomer);
