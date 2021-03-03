@@ -41,7 +41,12 @@ namespace GRUI
             }
             else
             {
-                Console.WriteLine("Customer ID: " + buyer.CustomerID);
+                Console.WriteLine("Customer Found!");
+                Console.WriteLine(MainMenu.linebreak);
+                Console.WriteLine(buyer.ToString());
+                Console.WriteLine(MainMenu.linebreak);
+                Console.WriteLine(MainMenu.presskey);
+                Console.ReadLine();
             }
             //Select location
             Console.WriteLine("Choose location:");
@@ -66,16 +71,26 @@ namespace GRUI
             }
             Console.WriteLine("Which record would you like to buy?");
             Console.WriteLine("Enter record ID: ");
-            Record foundRecord = _recordBL.SearchRecordByID(Int32.Parse(Console.ReadLine()));
+            int RecIDWeWant = Int32.Parse(Console.ReadLine()); 
+            Record foundRecord = _recordBL.SearchRecordByID(RecIDWeWant);
             if (foundRecord == null)
             {
                 Console.WriteLine("No record found.");
                 return;
             }
-            
+            int recInInv = localinventory.FindIndex(x => x.RecID == RecIDWeWant);
+            if (recInInv < 0)
+            {
+                Console.WriteLine("Record not in local inventory!");
+                Console.WriteLine(MainMenu.presskey);
+                Console.ReadLine();
+                return;
+            }
 
                 Console.WriteLine(foundRecord.ToString());
                 Console.WriteLine(MainMenu.linebreak);
+
+            //Quantity select
                 Console.WriteLine("How many would you like to buy?");
                 int BuyerQuan = Int32.Parse(Console.ReadLine());
 
