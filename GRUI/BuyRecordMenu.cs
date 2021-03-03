@@ -48,8 +48,8 @@ namespace GRUI
             location = _locationBL.GetThisLocation(100);
             //New Cart
 
-            Cart cart = _cartBL.newCart(buyer.CustomerID); //Make sure having the void method for the newCart is fine
-            Console.WriteLine("New Cart:" + cart.ToString());
+            Cart cart = _cartBL.newCart(buyer.CustomerID); 
+            //Make sure having the void method for the newCart is fine
             //Search inventory for items of said city (Philadelphia inventory ids are 1,2,4,5)
             List <Inventory> inventory = _inventoryBL.GetInventory();
             List<Inventory> city_inventory = new List<Inventory>();
