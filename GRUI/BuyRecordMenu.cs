@@ -99,7 +99,9 @@ namespace GRUI
                 total = total + subtotal;
             }
             Console.WriteLine("Total: " + total);
-            
+            //Reset Total
+            total = 0;
+
             Order finalOrder = new Order();
             finalOrder.CartID = cart.CartID;
             finalOrder.Customer = buyer;
@@ -112,13 +114,15 @@ namespace GRUI
             //adding orderProducts to database
             
             OrderProducts orderProcessed = new OrderProducts();
-            orderProcessed.RecQuan = 0;
+            //orderProcessed.RecQuan = 0;
             orderProcessed.OrdID = finalOrder.OrdID;
             orderProcessed.RecID = cartProducts.RecID;
             orderProcessed.RecQuan = cartProducts.RecQuan;
             
             
             _orderproductsBL.addOrderProducts(orderProcessed);
+
+            //TODO: Figure out why purgecarts doesn't work
             foreach(CartProducts c in cartProdList)
             {
             _cartproductsBL.PurgeCartProducts(cartProducts);

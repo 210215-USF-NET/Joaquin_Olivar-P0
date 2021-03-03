@@ -30,7 +30,8 @@ namespace GRDL
 
         public void PurgeCartProducts(CartProducts cartProductsforDeletion)
         {
-            _context.Cartproducts.Remove(_mapper.ParseCartProducts(cartProductsforDeletion));
+            _context.ChangeTracker.Clear();
+            _context.Cartproducts.RemoveRange(_mapper.ParseCartProducts(cartProductsforDeletion));
             _context.SaveChanges();
         }
     }
