@@ -6,6 +6,6 @@ namespace GRBL
 {
     public interface I_InventoryBL
     {
-        List<Inventory> GetInventory();
+        List<Inventory> GetInventory(int localID);
     }
 }

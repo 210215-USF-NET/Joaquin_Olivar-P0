@@ -37,29 +37,28 @@ namespace GRUI
             if (buyer == null)
             {
                 Console.WriteLine("No customers found.");
+                return;
             }
             else
             {
                 Console.WriteLine("Customer ID: " + buyer.CustomerID);
             }
             //Select location
-            Console.WriteLine("Only Phildelphia location available right now.");
-            LocationClass location = new LocationClass();
-            location = _locationBL.GetThisLocation(100);
-            //New Cart
-
-            Cart cart = _cartBL.newCart(buyer.CustomerID); 
-            //Make sure having the void method for the newCart is fine
-            //Search inventory for items of said city (Philadelphia inventory ids are 1,2,4,5)
-            List <Inventory> inventory = _inventoryBL.GetInventory();
-            List<Inventory> city_inventory = new List<Inventory>();
-            foreach (Inventory i in inventory)
+            Console.WriteLine("Choose location:");
+            Console.WriteLine("[100] Philadelphia, PA");
+            Console.WriteLine("[200] New York City, NY");
+            int localWeWant = Int32.Parse(Console.ReadLine());
+            if (localWeWant !=100 && localWeWant != 200)
             {
-                if(i.LocID == location.localID)
-                {
-                    city_inventory.Add(i);
-                }
+                Console.WriteLine("Not a valid location.");
+                Console.WriteLine(MainMenu.presskey);
+                Console.ReadLine();
+                return;
             }
+
+            Cart cart = _cartBL.newCart(buyer.CustomerID); //Cart Creation
+            List <Inventory> inventory = _inventoryBL.GetInventory(localWeWant); //Sets inventory to only have location inventory
+            Console.WriteLine(inventory.Count);
             //TODO: Actually sort records from inventory
 
             Console.WriteLine("Which record would you like to buy?");
@@ -122,11 +121,13 @@ namespace GRUI
             
             _orderproductsBL.addOrderProducts(orderProcessed);
 
-            //TODO: Figure out why purgecarts doesn't work
             foreach(CartProducts c in cartProdList)
             {
             _cartproductsBL.PurgeCartProducts(cartProducts);
             }
+            /*TODO: Implement purgecart maybe?? I have a feeling if I do this
+            it's gonna break some more code, and I don't wanna do that rn.
+            */
             //_cartBL.PurgeCart(cart)
             Console.WriteLine("Order bought.");
             Console.WriteLine(MainMenu.presskey);

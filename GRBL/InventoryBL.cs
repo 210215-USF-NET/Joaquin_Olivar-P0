@@ -11,9 +11,9 @@ namespace GRBL
         {
             _repo = repo;
         }
-        public List<Inventory> GetInventory()
+        public List<Inventory> GetInventory(int localID)
         {
-            return _repo.GetInventory();
+            return _repo.GetInventory(localID);
         }
     }
 }
