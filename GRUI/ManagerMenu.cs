@@ -1,6 +1,7 @@
 using System;
 using GRModels;
 using GRBL;
+using System.Collections.Generic;
 
 namespace GRUI
 {
@@ -8,10 +9,12 @@ namespace GRUI
     {
         private IRecordBL _recordBL;
         private ICustomerBL _customerBL;
-        public ManagerMenu(IRecordBL recordBL, ICustomerBL customerBL)
+        private I_InventoryBL _inventoryBL;
+        public ManagerMenu(IRecordBL recordBL, ICustomerBL customerBL, I_InventoryBL inventoryBL)
         {
             _recordBL = recordBL;
             _customerBL = customerBL;
+            _inventoryBL = inventoryBL;
         }
         public void Start()
         {
@@ -136,9 +139,11 @@ namespace GRUI
                 {
                     case "0":
                     Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
-                    foreach (var item in _recordBL.GetPhillyRecords())
+                    List<Inventory> phillyInventory = _inventoryBL.GetInventory(100);
+                    foreach (Inventory i in phillyInventory)
                     {
-                        Console.WriteLine(item.ToString());
+                        Record iR = _recordBL.SearchRecordByID(i.RecID);
+                        Console.WriteLine(iR.ToString());
                         Console.WriteLine(MainMenu.linebreak);
                     }
                     Console.WriteLine(MainMenu.presskey);
@@ -147,9 +152,11 @@ namespace GRUI
                     break;
                     case "1":
                     Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
-                    foreach (var item in _recordBL.GetNYCRecords())
+                    List<Inventory> nyInventory = _inventoryBL.GetInventory(200);
+                    foreach (var i in _inventoryBL.GetInventory(200))
                     {
-                        Console.WriteLine(item.ToString());
+                        Record iR = _recordBL.SearchRecordByID(200);
+                        Console.WriteLine(iR.ToString());
                         Console.WriteLine(MainMenu.linebreak);
                     }
                     Console.WriteLine(MainMenu.presskey);

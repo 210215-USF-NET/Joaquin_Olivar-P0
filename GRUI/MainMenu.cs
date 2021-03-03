@@ -42,7 +42,7 @@ namespace GRUI
                 Console.WriteLine("Please pick an option:");
                 Console.WriteLine("[0] Create an account.");
                 Console.WriteLine("[1] Buy a record.");
-                Console.WriteLine("[2] Search for an order.");
+                Console.WriteLine("[2] Get customer order(s).");
                 Console.WriteLine("[3] View full inventory.");
                 Console.WriteLine("[4] Search inventory.");
                 Console.WriteLine("[5] Manager login.");
@@ -84,7 +84,9 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())));
+                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
+                                new CustomerBL(new CustomerRepoDB(context, new Mapper())),
+                                new InventoryBL(new InventoryRepoDB(context, new Mapper())));
                                 adminmenu.Start();
                             }
                             else
