@@ -37,5 +37,10 @@ namespace GRDL
         {
             throw new NotImplementedException();
         }
+
+        public Customer SearchCustomerByID(int CustomerID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

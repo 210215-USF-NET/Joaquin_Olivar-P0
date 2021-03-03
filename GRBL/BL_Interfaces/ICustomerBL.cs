@@ -7,5 +7,6 @@ namespace GRBL
         List<Customer> GetCustomers();
         void AddCustomer(Customer newCustomer);
         Customer SearchCustomerByFName(string name);
+        Customer SearchCustomerByID(int CustomerID);
     }
 }

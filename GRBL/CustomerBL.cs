@@ -20,10 +20,13 @@ namespace GRBL
         {
             return _repo.GetCustomers();
         }
-
         public Customer SearchCustomerByFName(string name)
         {
             return _repo.SearchCustomerByFName(name);
+        }
+        public Customer SearchCustomerByID(int CustomerID)
+        {
+            return _repo.SearchCustomerByID(CustomerID);
         }
     }
 }

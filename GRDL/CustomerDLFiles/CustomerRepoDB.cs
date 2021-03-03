@@ -33,5 +33,9 @@ namespace GRDL
         {
             return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList().FirstOrDefault(x => x.FirstName == name);
         }
+        public Customer SearchCustomerByID(int CustomerID)
+        {
+            return _context.Customers.Select(x => _mapper.ParseCustomer(x)).ToList().FirstOrDefault(x => x.CustomerID == CustomerID);
+        }
     }
 }

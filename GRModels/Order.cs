@@ -9,5 +9,7 @@ namespace GRModels
         public DateTime OrDate {get; set;}
         public Customer Customer {get; set;}
         public int CusID {get; set;}
+
+        public override string ToString() => $"\tOrder Number: {OrdID}\n\tOrder Date: {OrDate}";
     }
 }

@@ -128,7 +128,9 @@ namespace GRUI
             _cartproductsBL.PurgeCartProducts(cartProducts);
             }
             //_cartBL.PurgeCart(cart)
-            
+            Console.WriteLine("Order bought.");
+            Console.WriteLine(MainMenu.presskey);
+            Console.ReadLine();
         }
     }
 }

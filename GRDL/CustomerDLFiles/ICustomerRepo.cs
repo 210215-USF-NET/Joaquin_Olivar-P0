@@ -7,5 +7,6 @@ namespace GRDL
         List<Customer> GetCustomers();
         Customer AddCustomer(Customer newCustomer);
         Customer SearchCustomerByFName(string name);
+        Customer SearchCustomerByID(int CustomerID);
     }
 }

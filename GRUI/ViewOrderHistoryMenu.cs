@@ -1,6 +1,7 @@
 using GRModels;
 using System;
 using GRBL;
+using System.Collections.Generic;
 
 namespace GRUI
 {
@@ -29,7 +30,29 @@ namespace GRUI
         }
         public void Start()
         {
-            Console.WriteLine("Test message.");
+            Console.WriteLine("Please enter your customer ID: ");
+            int ID = Int32.Parse(Console.ReadLine());
+            Customer customer = _customerBL.SearchCustomerByID(ID);
+            Console.WriteLine(customer.ToString());
+            Console.WriteLine(MainMenu.linebreak);
+            //Create list with order ID's
+            List<Order> orderlist =_orderBL.GetOrdersByID(ID);
+            Console.WriteLine("Order list: ");
+            foreach (Order o in orderlist)
+            {
+                Console.WriteLine(o.ToString());
+                List<OrderProducts> opl =_orderproductsBL.GetOrderProductsByID(o.OrdID);
+                Console.WriteLine(MainMenu.linebreak);
+                foreach (OrderProducts op in opl)
+                {
+                    Console.WriteLine(op.ToString());
+                    Record opR = _recordBL.SearchRecordByID(op.RecID);
+                    Console.WriteLine(opR.ToString());
+                }
+            }
+            Console.WriteLine(MainMenu.linebreak);
+            Console.WriteLine(MainMenu.presskey);
+            Console.ReadLine();
         }
     }
 }
