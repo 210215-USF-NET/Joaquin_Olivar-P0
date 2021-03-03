@@ -7,5 +7,6 @@ namespace GRBL
     public interface I_InventoryBL
     {
         List<Inventory> GetInventory(int localID);
+        void AddToInventory(int localID, int RecID, int RecQuan);
     }
 }

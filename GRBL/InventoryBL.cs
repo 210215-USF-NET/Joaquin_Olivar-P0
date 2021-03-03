@@ -15,5 +15,9 @@ namespace GRBL
         {
             return _repo.GetInventory(localID);
         }
+        public void AddToInventory(int localID, int RecID, int RecQuan)
+        {
+            _repo.AddToInventory(localID, RecID, RecQuan);
+        }
     }
 }

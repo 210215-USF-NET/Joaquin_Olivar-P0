@@ -32,8 +32,8 @@ namespace GRUI
         public void Start()
         {   
             //Select customer
-            Console.WriteLine("Enter customer name: ");
-            Customer buyer = _customerBL.SearchCustomerByFName(Console.ReadLine());
+            Console.WriteLine("Enter customer ID: ");
+            Customer buyer = _customerBL.SearchCustomerByID(Int32.Parse(Console.ReadLine()));
             if (buyer == null)
             {
                 Console.WriteLine("No customers found.");

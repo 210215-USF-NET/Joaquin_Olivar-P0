@@ -131,11 +131,16 @@ namespace GRUI
             newCustomer.Address = Console.ReadLine();
             Console.WriteLine("Enter zip code:");
             newCustomer.ZipCode = Int32.Parse(Console.ReadLine());
+            newCustomer.CustomerID = RNG.numb.Next(1,1001);
 
             //Reading back customer information.
+            Console.WriteLine(linebreak);
             _customerBL.AddCustomer(newCustomer);
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
+            Console.WriteLine(linebreak);
+            Console.WriteLine(presskey);
+            Console.ReadLine();
         }
         public void GetRecords()
         {

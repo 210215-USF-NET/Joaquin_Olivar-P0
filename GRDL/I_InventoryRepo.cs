@@ -5,5 +5,6 @@ namespace GRDL
     public interface I_InventoryRepo
     {
         List<Inventory> GetInventory(int localID);
+        void AddToInventory(int localID, int RecID, int RecQuan);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using GRModels;
 using GRBL;
+using GRDL;
 using System.Collections.Generic;
 
 namespace GRUI
@@ -79,10 +80,13 @@ namespace GRUI
                     newRecord.daCondition = Enum.Parse<Condition>(Console.ReadLine());
                     Console.WriteLine("How much?");
                     newRecord.Price = float.Parse(Console.ReadLine());
-
+                    newRecord.RecID = RNG.numb.Next(1010,2000);
                     //Sends information to the BL
                     _recordBL.AddPhillyRecord(newRecord);
-
+                    Console.WriteLine("How many copies are we adding?");
+                    int newQuan = Int32.Parse(Console.ReadLine());
+                    //Adding record to Philadelphia inventory
+                    _inventoryBL.AddToInventory(100, newRecord.RecID, newQuan);
                     //Writes back vinyl information
                     Console.WriteLine("Album added to inventory:");
                     Console.WriteLine(MainMenu.linebreak);
@@ -106,9 +110,14 @@ namespace GRUI
                     newRecord1.daCondition = Enum.Parse<Condition>(Console.ReadLine());
                     Console.WriteLine("How much?");
                     newRecord1.Price = float.Parse(Console.ReadLine());
+                    newRecord1.RecID = RNG.numb.Next(1010,2000);
 
                     //Sends information to the BL
                     _recordBL.AddNYCRecord(newRecord1);
+                    Console.WriteLine("How many copies are we adding?");
+                    int newQuan1 = Int32.Parse(Console.ReadLine());
+                    //Adding record to New York inventory
+                    _inventoryBL.AddToInventory(200, newRecord1.RecID, newQuan1);
 
                     //Writes back vinyl information
                     Console.WriteLine("Album added to inventory:");
@@ -153,9 +162,9 @@ namespace GRUI
                     case "1":
                     Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
                     List<Inventory> nyInventory = _inventoryBL.GetInventory(200);
-                    foreach (var i in _inventoryBL.GetInventory(200))
+                    foreach (var i in nyInventory)
                     {
-                        Record iR = _recordBL.SearchRecordByID(200);
+                        Record iR = _recordBL.SearchRecordByID(i.RecID);
                         Console.WriteLine(iR.ToString());
                         Console.WriteLine(MainMenu.linebreak);
                     }
