@@ -27,7 +27,7 @@ namespace GRUI
             using var context = new GRdatabaseContext(options);
             //End context
 
-            IMenu menu = new MainMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),new CustomerBL(new CustomerRepoDB(context, new Mapper())));
+            IMenu menu = new MainMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
             menu.Start();
 
             Log.Logger = new LoggerConfiguration()

@@ -8,14 +8,10 @@ namespace GRUI
 {
     public class ManagerMenu : IMenu
     {
-        private IRecordBL _recordBL;
-        private ICustomerBL _customerBL;
-        private I_InventoryBL _inventoryBL;
-        public ManagerMenu(IRecordBL recordBL, ICustomerBL customerBL, I_InventoryBL inventoryBL)
+        private I_GRBL _GRBL;
+        public ManagerMenu(GRBL_Class GRBL)
         {
-            _recordBL = recordBL;
-            _customerBL = customerBL;
-            _inventoryBL = inventoryBL;
+            _GRBL = GRBL;
         }
         public void Start()
         {
@@ -82,11 +78,11 @@ namespace GRUI
                     newRecord.Price = float.Parse(Console.ReadLine());
                     newRecord.RecID = RNG.numb.Next(1010,2000);
                     //Sends information to the BL
-                    _recordBL.AddPhillyRecord(newRecord);
+                    _GRBL.AddPhillyRecord(newRecord);
                     Console.WriteLine("How many copies are we adding?");
                     int newQuan = Int32.Parse(Console.ReadLine());
                     //Adding record to Philadelphia inventory
-                    _inventoryBL.AddToInventory(100, newRecord.RecID, newQuan);
+                    _GRBL.AddToInventory(100, newRecord.RecID, newQuan);
                     //Writes back vinyl information
                     Console.WriteLine("Album added to inventory:");
                     Console.WriteLine(MainMenu.linebreak);
@@ -113,11 +109,11 @@ namespace GRUI
                     newRecord1.RecID = RNG.numb.Next(1010,2000);
 
                     //Sends information to the BL
-                    _recordBL.AddNYCRecord(newRecord1);
+                    _GRBL.AddNYCRecord(newRecord1);
                     Console.WriteLine("How many copies are we adding?");
                     int newQuan1 = Int32.Parse(Console.ReadLine());
                     //Adding record to New York inventory
-                    _inventoryBL.AddToInventory(200, newRecord1.RecID, newQuan1);
+                    _GRBL.AddToInventory(200, newRecord1.RecID, newQuan1);
 
                     //Writes back vinyl information
                     Console.WriteLine("Album added to inventory:");
@@ -148,10 +144,10 @@ namespace GRUI
                 {
                     case "0":
                     Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
-                    List<Inventory> phillyInventory = _inventoryBL.GetInventory(100);
+                    List<Inventory> phillyInventory = _GRBL.GetInventory(100);
                     foreach (Inventory i in phillyInventory)
                     {
-                        Record iR = _recordBL.SearchRecordByID(i.RecID);
+                        Record iR = _GRBL.SearchRecordByID(i.RecID);
                         Console.WriteLine(iR.ToString());
                         Console.WriteLine(MainMenu.linebreak);
                     }
@@ -161,10 +157,10 @@ namespace GRUI
                     break;
                     case "1":
                     Console.WriteLine($"Here's what's in stock: \n{MainMenu.linebreak}");
-                    List<Inventory> nyInventory = _inventoryBL.GetInventory(200);
+                    List<Inventory> nyInventory = _GRBL.GetInventory(200);
                     foreach (var i in nyInventory)
                     {
-                        Record iR = _recordBL.SearchRecordByID(i.RecID);
+                        Record iR = _GRBL.SearchRecordByID(i.RecID);
                         Console.WriteLine(iR.ToString());
                         Console.WriteLine(MainMenu.linebreak);
                     }
@@ -181,7 +177,7 @@ namespace GRUI
         public void GetCustomers()
         {
             Console.WriteLine($"Customer List: \n{MainMenu.linebreak}");
-            foreach (var item in _customerBL.GetCustomers())
+            foreach (var item in _GRBL.GetCustomers())
             {
                 Console.WriteLine(item.ToString());
                 Console.WriteLine(MainMenu.linebreak);
@@ -192,7 +188,7 @@ namespace GRUI
         public void SearchCustomers()
         {
             Console.WriteLine("Enter customer name: ");
-            Customer foundCustomer = _customerBL.SearchCustomerByFName(Console.ReadLine());
+            Customer foundCustomer = _GRBL.SearchCustomerByFName(Console.ReadLine());
             if (foundCustomer == null)
             {
                 Console.WriteLine("No customers found.");

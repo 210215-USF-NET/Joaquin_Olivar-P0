@@ -11,12 +11,10 @@ namespace GRUI
 {
     public class MainMenu : IMenu
     {
-        private IRecordBL _recordBL;
-        private ICustomerBL _customerBL;
-        public MainMenu(IRecordBL recordBL, ICustomerBL customerBL)
+        private I_GRBL _GRBL;
+        public MainMenu(GRBL_Class GRBL)
         {
-            _recordBL = recordBL;
-            _customerBL = customerBL;
+            _GRBL = GRBL;
         }
 
         public static string linebreak = "------------------------";
@@ -56,19 +54,11 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        IMenu buymenu = new BuyRecordMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
-                        new CustomerBL(new CustomerRepoDB(context, new Mapper())),new LocationBL(new LocationRepoDB(context, new Mapper())),
-                        new CartBL(new CartRepoDB(context, new Mapper())), new CartProductsBL(new CartProductsDB(context, new Mapper())),
-                        new InventoryBL(new InventoryRepoDB(context, new Mapper())), new OrderBL(new OrderRepoDB(context, new Mapper())),
-                        new OrderProductsBL(new OrderProductsRepoDB(context, new Mapper())));
+                        IMenu buymenu = new BuyRecordMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
                         buymenu.Start();
                         break;
                     case "2":
-                        IMenu searchmenu = new ViewOrderHistoryMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
-                        new CustomerBL(new CustomerRepoDB(context, new Mapper())),new LocationBL(new LocationRepoDB(context, new Mapper())),
-                        new CartBL(new CartRepoDB(context, new Mapper())), new CartProductsBL(new CartProductsDB(context, new Mapper())),
-                        new InventoryBL(new InventoryRepoDB(context, new Mapper())), new OrderBL(new OrderRepoDB(context, new Mapper())),
-                        new OrderProductsBL(new OrderProductsRepoDB(context, new Mapper())));
+                        IMenu searchmenu = new ViewOrderHistoryMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
                         searchmenu.Start();
                         break;
                     case "3":
@@ -84,9 +74,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new RecordBL(new RecordRepoDB(context, new Mapper())),
-                                new CustomerBL(new CustomerRepoDB(context, new Mapper())),
-                                new InventoryBL(new InventoryRepoDB(context, new Mapper())));
+                                IMenu adminmenu = new ManagerMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
                                 adminmenu.Start();
                             }
                             else
@@ -135,7 +123,7 @@ namespace GRUI
 
             //Reading back customer information.
             Console.WriteLine(linebreak);
-            _customerBL.AddCustomer(newCustomer);
+            _GRBL.AddCustomer(newCustomer);
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
             Console.WriteLine(linebreak);
@@ -156,7 +144,7 @@ namespace GRUI
             {
                 case "0":
                 Console.WriteLine($"Here's what's in stock: \n{linebreak}");
-                foreach (var item in _recordBL.GetPhillyRecords())
+                foreach (var item in _GRBL.GetPhillyRecords())
                 {
                     Console.WriteLine(item.ToString());
                     Console.WriteLine(linebreak);
@@ -167,7 +155,7 @@ namespace GRUI
                 break;
                 case "1":
                 Console.WriteLine($"Here's what's in stock: \n{linebreak}");
-                foreach (var item in _recordBL.GetNYCRecords())
+                foreach (var item in _GRBL.GetNYCRecords())
                 {
                     Console.WriteLine(item.ToString());
                     Console.WriteLine(linebreak);
@@ -185,7 +173,7 @@ namespace GRUI
         public void SearchRecords()
         {
             Console.WriteLine("Enter record name: ");
-            Model.Record foundRecord = _recordBL.SearchRecordByName(Console.ReadLine());
+            Model.Record foundRecord = _GRBL.SearchRecordByName(Console.ReadLine());
             if (foundRecord == null)
             {
                 Console.WriteLine("No record found.");
