@@ -3,35 +3,20 @@ using Model = GRModels;
 using System;
 using GRBL;
 using GRDL;
-using GRDL.Entities;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
 namespace GRUI
 {
     public class MainMenu : IMenu
     {
-        private I_GRBL _GRBL;
-        public MainMenu(GRBL_Class GRBL)
+        I_GRBiz _biz;
+        public MainMenu(I_GRBiz biz)
         {
-            _GRBL = GRBL;
+            _biz = biz;
         }
 
         public static string linebreak = "------------------------";
         public static string presskey = "Press any key to continue.";
         public void Start()
         {
-            //Context
-            var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json").Build();
-
-            string connectionString = configuration.GetConnectionString("RecordDB");
-            DbContextOptions<GRdatabaseContext> options = new DbContextOptionsBuilder<GRdatabaseContext>()
-            .UseSqlServer(connectionString).Options;
-
-            using var context = new GRdatabaseContext(options);
-            //End context
             Boolean stay = true;
             do
             {
@@ -54,11 +39,11 @@ namespace GRUI
                         CreateAccount();
                         break;
                     case "1":
-                        IMenu buymenu = new BuyRecordMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
+                        IMenu buymenu = new BuyRecordMenu(_biz);
                         buymenu.Start();
                         break;
                     case "2":
-                        IMenu searchmenu = new ViewOrderHistoryMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
+                        IMenu searchmenu = new ViewOrderHistoryMenu(_biz);
                         searchmenu.Start();
                         break;
                     case "3":
@@ -74,7 +59,7 @@ namespace GRUI
                             Console.WriteLine("Enter password: ");
                             if(Console.ReadLine() == Manager.passWord)
                             {
-                                IMenu adminmenu = new ManagerMenu(new GRBL_Class(new GRDL_Class(context, new Mapper())));
+                                IMenu adminmenu = new ManagerMenu(_biz);
                                 adminmenu.Start();
                             }
                             else
@@ -123,7 +108,7 @@ namespace GRUI
 
             //Reading back customer information.
             Console.WriteLine(linebreak);
-            _GRBL.AddCustomer(newCustomer);
+            _biz.AddCustomer(newCustomer);
             Console.WriteLine("New account added.");
             Console.WriteLine(newCustomer.ToString());
             Console.WriteLine(linebreak);
@@ -144,7 +129,7 @@ namespace GRUI
             {
                 case "0":
                 Console.WriteLine($"Here's what's in stock: \n{linebreak}");
-                foreach (var item in _GRBL.GetPhillyRecords())
+                foreach (var item in _biz.GetPhillyRecords())
                 {
                     Console.WriteLine(item.ToString());
                     Console.WriteLine(linebreak);
@@ -155,7 +140,7 @@ namespace GRUI
                 break;
                 case "1":
                 Console.WriteLine($"Here's what's in stock: \n{linebreak}");
-                foreach (var item in _GRBL.GetNYCRecords())
+                foreach (var item in _biz.GetNYCRecords())
                 {
                     Console.WriteLine(item.ToString());
                     Console.WriteLine(linebreak);
@@ -173,7 +158,7 @@ namespace GRUI
         public void SearchRecords()
         {
             Console.WriteLine("Enter record name: ");
-            Model.Record foundRecord = _GRBL.SearchRecordByName(Console.ReadLine());
+            Model.Record foundRecord = _biz.SearchRecordByName(Console.ReadLine());
             if (foundRecord == null)
             {
                 Console.WriteLine("No record found.");

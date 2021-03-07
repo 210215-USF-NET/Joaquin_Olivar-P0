@@ -2,7 +2,7 @@ using GRModels;
 using System.Collections.Generic;
 namespace GRBL
 {
-    public interface I_GRBL
+    public interface I_GRBiz
     {
     //Record object methods
         List<Record> GetPhillyRecords();

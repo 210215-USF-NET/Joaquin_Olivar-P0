@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using GRDL;
 namespace GRBL
 {
-    public class GRBL_Class : I_GRBL
+    public class GRBiz : I_GRBiz
     {
         private I_GRDL _repo;
-        public GRBL_Class(I_GRDL repo)
+        public GRBiz(I_GRDL repo)
         {
             _repo = repo;
         }

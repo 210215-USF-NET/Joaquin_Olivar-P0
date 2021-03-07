@@ -8,8 +8,8 @@ namespace GRUI
 {
     public class ManagerMenu : IMenu
     {
-        private I_GRBL _GRBL;
-        public ManagerMenu(GRBL_Class GRBL)
+        private I_GRBiz _GRBL;
+        public ManagerMenu(I_GRBiz GRBL)
         {
             _GRBL = GRBL;
         }
