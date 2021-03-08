@@ -2,7 +2,7 @@ using GRModels;
 using Model = GRModels;
 using System;
 using GRBL;
-using GRDL;
+using GRDL; //Only using this for the RNG number generator
 namespace GRUI
 {
     public class MainMenu : IMenu
